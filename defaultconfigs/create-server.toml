@@ -288,7 +288,7 @@
 				gearbox = 0.0
 				hose_pulley = 4.0
 				elevator_pulley = 4.0
-				mechanical_crafter = 2.0
+				mechanical_crafter = 8.0
 
 			#.
 			#[in Stress Units]
@@ -331,7 +331,7 @@
 	#[-1 to disable this behaviour]
 	#The minimum amount of fluid blocks the hose pulley needs to find before deeming it an infinite source.
 	#Range: > -1
-	hosePulleyBlockThreshold = 4000
+	hosePulleyBlockThreshold = -1
 	#.
 	#Whether hose pulleys should continue filling up above-threshold sources.
 	fillInfinite = false
