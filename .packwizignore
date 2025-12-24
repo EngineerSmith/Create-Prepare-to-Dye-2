@@ -32,3 +32,5 @@
 
 update_mod.sh
 kubejs/probe/cache
+*.db
+kubejs.old
