@@ -9,11 +9,11 @@ on:
       - java/**
 env:
   pack-file: "pack.toml"
-  name: 'Create: Prepare to Dye'
-  slug: 'create-prepare-to-dye'
-  modrinth-url: 'https://modrinth.com/modpack/create-prepare-to-dye'
+  name: 'Create: Prepare to Dye 2'
+  slug: 'create-prepare-to-dye-2'
+  modrinth-url: 'https://modrinth.com/modpack/create-prepare-to-dye-2'
   loader: 'forge'
-  mc_version: '1.19.2'
+  mc_version: '1.20.1'
 
 jobs:
   check_rank:
@@ -130,12 +130,12 @@ jobs:
       - name: Build Modpack modrinth
         if : matrix.platform == 'modrinth'
         run: packwiz ${{ matrix.platform }} export --output "${{ steps.build_args.outputs.name }}.${{ matrix.file_suffix }}"
-      - name: Build Modpack curseforge
-        if : matrix.platform == 'curseforge'
-        run: |
-          cd curseforge
-          packwiz ${{ matrix.platform }} export --output "${{ steps.build_args.outputs.name }}.${{ matrix.file_suffix }}"
-          cp *.zip ../
+      # - name: Build Modpack curseforge
+      #   if : matrix.platform == 'curseforge'
+      #   run: |
+      #     cd curseforge
+      #     packwiz ${{ matrix.platform }} export --output "${{ steps.build_args.outputs.name }}.${{ matrix.file_suffix }}"
+      #     cp *.zip ../
       - name: Upload Modpack file to GitHub Releases
         run: |
           gh release upload ${{ needs.tag_and_release.outputs.new_tag }} *.${{ matrix.file_suffix }} \
@@ -172,17 +172,17 @@ jobs:
         uses: actions-js/push@master
         with:
           github_token: ${{ secrets.GH_TOKEN }}
-      - name: Publish to CurseForge
-        if: matrix.platform == 'curseforge'
-        uses: Kir-Antipov/mc-publish@v3.3.0
-        with:
-          curseforge-id: ${{ vars.CF_ID }}
-          curseforge-token: ${{ secrets.CF_API_TOKEN }}
-          loaders: forge
-          game-versions: 1.19.2
-          changelog: ${{ needs.tag_and_release.outputs.changelog }}
-          files: "*.zip"
-          version: ${{ needs.tag_and_release.outputs.new_tag }}
-          version-type: release
-          name: ${{ steps.build_args.outputs.name }}
-          curseforge-version: ${{ needs.tag_and_release.outputs.new_tag }}
+      # - name: Publish to CurseForge
+      #   if: matrix.platform == 'curseforge'
+      #   uses: Kir-Antipov/mc-publish@v3.3.0
+      #   with:
+      #     curseforge-id: ${{ vars.CF_ID }}
+      #     curseforge-token: ${{ secrets.CF_API_TOKEN }}
+      #     loaders: forge
+      #     game-versions: 1.20.1
+      #     changelog: ${{ needs.tag_and_release.outputs.changelog }}
+      #     files: "*.zip"
+      #     version: ${{ needs.tag_and_release.outputs.new_tag }}
+      #     version-type: release
+      #     name: ${{ steps.build_args.outputs.name }}
+      #     curseforge-version: ${{ needs.tag_and_release.outputs.new_tag }}
