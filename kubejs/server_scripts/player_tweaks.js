@@ -93,3 +93,22 @@ BlockEvents.rightClicked("create:spout", function (event) {
     event.cancel();
   }
 });
+
+// =============================================================================
+// PET BETSY - Pet cows with empty hand, teleport back with command
+// =============================================================================
+
+// Pet cows with empty hand - stores last cow location
+ItemEvents.entityInteracted("minecraft:air", (event) => {
+  if (!event.player.mainHandItem.empty) return;
+  if (event.player.persistentData.isEmpty()) return;
+  if (event.target.type != "minecraft:cow") return;
+
+  event.player.swing();
+  event.player.persistentData.put("betsy_last_location_x", event.target.x);
+  event.player.persistentData.put("betsy_last_location_z", event.target.z);
+  Utils.server.runCommandSilent(
+    `/particle minecraft:heart ${event.target.x} ${event.target.y + 1.5} ${event.target.z} .25 .25 .25 .15 1`
+  );
+});
+
