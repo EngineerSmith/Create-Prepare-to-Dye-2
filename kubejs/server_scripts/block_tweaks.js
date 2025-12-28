@@ -52,3 +52,26 @@ ServerEvents.loaded(function(event) {
     event.server.runCommandSilent("place structure minecraft:spaceship_wreck_main 0 64 0");
   }
 });
+
+// Botania rods only work when placed in avatars, not used manually
+BlockEvents.rightClicked(function(event) {
+  if (!event.item.hasTag("botania:rods")) return;
+
+  // Allow inserting rods into avatars
+  if (event.block.id === "botania:avatar") {
+    event.server.runCommandSilent(
+      `playsound minecraft:entity.glow_item_frame.add_item block @a ${event.block.x} ${event.block.y} ${event.block.z}`
+    );
+    return;
+  }
+
+  // Block manual rod use
+  event.server.runCommandSilent(
+    `playsound minecraft:block.fire.extinguish block @a ${event.player.x} ${event.player.y} ${event.player.z}`
+  );
+  event.server.runCommandSilent(
+    `title ${event.player.name.string} actionbar ${Text.of("Your metallic grips can't even get a spark...").red().toJson()}`
+  );
+  event.player.addItemCooldown(event.item, 20);
+  event.cancel();
+});
