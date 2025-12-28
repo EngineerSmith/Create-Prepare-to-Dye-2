@@ -1,0 +1,10 @@
+## [1.239.0](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/compare/1.238.0...1.239.0) (2025-12-28)
+
+
+### Features
+
+* make botania rods work in avatars but not for players ([91c099f](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/commit/91c099fbfefa25084c7e8aadc9bba66263ce2f56))
+* port rail changes ([8a51235](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/commit/8a51235c930d7ba8aa1da7fc74a3bcf370b7504a))
+* port tool removals ([5c92923](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/commit/5c92923983a5410c3fd11b101819b6806e152fb3))
+
+
