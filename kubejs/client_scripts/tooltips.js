@@ -3,9 +3,9 @@
 
 // Converts _text_ syntax to gold colored text
 function formatTooltipText(text) {
-  let parts = text.split("_");
-  let result = Text.of("");
-  for (let i = 0; i < parts.length; i++) {
+  var parts = text.split("_");
+  var result = Text.of("");
+  for (var i = 0; i < parts.length; i++) {
     if (i % 2 === 0) {
       result = result.append(Text.gray(parts[i]));
     } else {
@@ -16,7 +16,7 @@ function formatTooltipText(text) {
 }
 
 // Static tooltip mappings (item ID -> lang key)
-const TOOLTIP_MAPPINGS = {
+var TOOLTIP_MAPPINGS = {
   // AE2 tooltips
   "ae2:toggle_bus": "ptd.tooltip.ae2.toggle_bus",
   "ae2:inverted_toggle_bus": "ptd.tooltip.ae2.toggle_bus",
@@ -84,13 +84,8 @@ const TOOLTIP_MAPPINGS = {
   // Forgery tweaks tooltips
   "minecraft:campfire": "ptd.tooltip.forgery.campfire",
   "minecraft:soul_campfire": "ptd.tooltip.forgery.campfire",
-  // "minecraft:sweet_berries": "ptd.tooltip.forgery.berry_bush",
-  // "minecraft:cactus": "ptd.tooltip.forgery.cactus",
-  // "minecraft:arrow": "ptd.tooltip.forgery.arrow",
   "minecraft:cobweb": "ptd.tooltip.forgery.cobweb",
   "minecraft:farmland": "ptd.tooltip.forgery.farmland",
-  // "minecraft:trident": "ptd.tooltip.forgery.trident",
-  // "minecraft:lever": "ptd.tooltip.forgery.lever",
   "minecraft:note_block": "ptd.tooltip.forgery.note_block",
   "minecraft:moss_block": "ptd.tooltip.forgery.moss",
   "minecraft:anvil": "ptd.tooltip.forgery.anvil",
@@ -100,13 +95,11 @@ const TOOLTIP_MAPPINGS = {
   "minecraft:powered_rail": "ptd.tooltip.forgery.powered_rail",
   "minecraft:detector_rail": "ptd.tooltip.forgery.detector_rail",
   "minecraft:furnace_minecart": "ptd.tooltip.forgery.furnace_minecart",
-  // "minecraft:crossbow": "ptd.tooltip.forgery.crossbow",
-  "minecraft:blaze_powder": "ptd.tooltip.forgery.blaze_powder",
-  // "minecraft:bow": "ptd.tooltip.forgery.bow",
+  "minecraft:blaze_powder": "ptd.tooltip.forgery.blaze_powder"
 };
 
 // AE2 smart cables - all colors
-const AE2_SMART_CABLES = [
+var AE2_SMART_CABLES = [
   "ae2:fluix_smart_cable",
   "ae2:red_smart_cable",
   "ae2:blue_smart_cable",
@@ -123,31 +116,31 @@ const AE2_SMART_CABLES = [
   "ae2:light_blue_smart_cable",
   "ae2:magenta_smart_cable",
   "ae2:brown_smart_cable",
-  "ae2:black_smart_cable",
+  "ae2:black_smart_cable"
 ];
-AE2_SMART_CABLES.forEach((cable) => {
-  TOOLTIP_MAPPINGS[cable] = "ptd.tooltip.ae2.smart_cable";
-});
+for (var i = 0; i < AE2_SMART_CABLES.length; i++) {
+  TOOLTIP_MAPPINGS[AE2_SMART_CABLES[i]] = "ptd.tooltip.ae2.smart_cable";
+}
 
 // Golden tools - Fortune
-const GOLDEN_TOOLS = [
+var GOLDEN_TOOLS = [
   "minecraft:golden_pickaxe",
   "minecraft:golden_shovel",
   "minecraft:golden_axe",
   "minecraft:golden_sword",
-  "minecraft:golden_hoe",
+  "minecraft:golden_hoe"
 ];
 
 // Diamond tools - Silk Touch
-const DIAMOND_TOOLS = [
+var DIAMOND_TOOLS = [
   "minecraft:diamond_pickaxe",
   "minecraft:diamond_shovel",
   "minecraft:diamond_axe",
-  "minecraft:diamond_hoe",
+  "minecraft:diamond_hoe"
 ];
 
 // Wood logs tooltip
-const WOOD_LOGS = [
+var WOOD_LOGS = [
   "minecraft:oak_wood",
   "minecraft:spruce_wood",
   "minecraft:birch_wood",
@@ -183,68 +176,71 @@ const WOOD_LOGS = [
   "quark:blossom_log",
   "quark:blossom_wood",
   "quark:stripped_blossom_log",
-  "quark:stripped_blossom_wood",
+  "quark:stripped_blossom_wood"
 ];
-WOOD_LOGS.forEach((log) => {
-  TOOLTIP_MAPPINGS[log] = "ptd.tooltip.wood_logs";
-});
+for (var i = 0; i < WOOD_LOGS.length; i++) {
+  TOOLTIP_MAPPINGS[WOOD_LOGS[i]] = "ptd.tooltip.wood_logs";
+}
 
-ItemEvents.tooltip((event) => {
+ItemEvents.tooltip(function(event) {
   // Static tooltips from lang file
-  Object.entries(TOOLTIP_MAPPINGS).forEach(([itemId, langKey]) => {
-    let translated = Text.translate(langKey).getString();
+  var mappingKeys = Object.keys(TOOLTIP_MAPPINGS);
+  for (var i = 0; i < mappingKeys.length; i++) {
+    var itemId = mappingKeys[i];
+    var langKey = TOOLTIP_MAPPINGS[itemId];
+    var translated = Text.translate(langKey).getString();
     if (translated !== langKey) {
       event.add(itemId, formatTooltipText(translated));
     }
-  });
+  }
 
   // Golden tools - Fortune tooltip
-  GOLDEN_TOOLS.forEach((tool) => {
-    let translated = Text.translate("ptd.tooltip.golden_tools").getString();
-    event.add(tool, formatTooltipText(translated));
-  });
+  for (var i = 0; i < GOLDEN_TOOLS.length; i++) {
+    var translated = Text.translate("ptd.tooltip.golden_tools").getString();
+    event.add(GOLDEN_TOOLS[i], formatTooltipText(translated));
+  }
 
   // Diamond tools - Silk Touch tooltips
-  DIAMOND_TOOLS.forEach((tool) => {
-    event.add(tool, Text.of(Text.translate("ptd.tooltip.diamond_silk_touch").getString()).italic().gray());
-    let translated = Text.translate("ptd.tooltip.diamond_tools").getString();
-    event.add(tool, formatTooltipText(translated));
-  });
+  for (var i = 0; i < DIAMOND_TOOLS.length; i++) {
+    event.add(DIAMOND_TOOLS[i], Text.of(Text.translate("ptd.tooltip.diamond_silk_touch").getString()).italic().gray());
+    var translated = Text.translate("ptd.tooltip.diamond_tools").getString();
+    event.add(DIAMOND_TOOLS[i], formatTooltipText(translated));
+  }
 
   // Disabled items tooltip
-  event.addAdvanced("#c:removed", (item, advanced, text) => {
-    let translated = Text.translate("ptd.tooltip.disabled_item").getString();
+  event.addAdvanced("#c:removed", function(item, advanced, text) {
+    var translated = Text.translate("ptd.tooltip.disabled_item").getString();
     text.add(Text.red(translated));
   });
 
   // Food nutrition and saturation tooltips
-  event.addAdvanced(Ingredient.all, (item, advanced, text) => {
-    let foodProps = item.getFoodProperties(null);
+  event.addAdvanced(Ingredient.all, function(item, advanced, text) {
+    var foodProps = item.getFoodProperties(null);
     if (!foodProps) return;
-    let nutrition = foodProps.getNutrition();
-    let saturationMod = foodProps.getSaturationModifier();
-    let saturation = Math.round(nutrition * saturationMod * 2 * 10) / 10;
-    text.add(Text.darkGreen("Saturation").append(Text.green(` ${saturation}`)));
-    text.add(Text.darkGreen("Nutrition").append(Text.green(` ${nutrition}`)));
+    var nutrition = foodProps.getNutrition();
+    var saturationMod = foodProps.getSaturationModifier();
+    var saturation = Math.round(nutrition * saturationMod * 2 * 10) / 10;
+    text.add(Text.darkGreen("Saturation").append(Text.green(" " + saturation)));
+    text.add(Text.darkGreen("Nutrition").append(Text.green(" " + nutrition)));
   });
 
   // Burn time tooltips
-  const $ForgeHooks = Java.loadClass("net.minecraftforge.common.ForgeHooks");
-  event.addAdvanced(Ingredient.all, (item, advanced, text) => {
-    let burnTime = $ForgeHooks.getBurnTime(item, null);
+  var $ForgeHooks = Java.loadClass("net.minecraftforge.common.ForgeHooks");
+  event.addAdvanced(Ingredient.all, function(item, advanced, text) {
+    var burnTime = $ForgeHooks.getBurnTime(item, null);
     if (burnTime <= 0) return;
     text.add(
-      Text.darkGray("Burn Time").append(Text.gray(` ${Math.round((burnTime / 20) * 10) / 10} Seconds`))
+      Text.darkGray("Burn Time").append(Text.gray(" " + Math.round((burnTime / 20) * 10) / 10 + " Seconds"))
     );
   });
 
   // Category and device type tooltips
-  event.addAdvanced(Ingredient.all, (item, advanced, text) => {
-    let itemObj = Item.of(item);
+  event.addAdvanced(Ingredient.all, function(item, advanced, text) {
+    var itemObj = Item.of(item);
 
     // Show mod name on Ctrl
     if (advanced) {
-      let modId = itemObj.mod;
+      var modId = itemObj.mod;
       if (modId && modId !== "minecraft") {
         text.add(
           Text.darkGray("[").append(
@@ -256,12 +252,17 @@ ItemEvents.tooltip((event) => {
 
     // Device type tooltip
     if (itemObj.hasTag("ptd:devices/generics") || itemObj.hasTag("forge:devices")) {
-      let deviceTag = itemObj
-        .getTags()
-        .toArray()
-        .find((tag) => tag.location().toString().includes("devices/"));
+      var tags = itemObj.getTags().toArray();
+      var deviceTag = null;
+      for (var i = 0; i < tags.length; i++) {
+        if (tags[i].location().toString().indexOf("devices/") !== -1) {
+          deviceTag = tags[i];
+          break;
+        }
+      }
       if (deviceTag) {
-        let deviceType = deviceTag.location().path.split("/").pop().replaceAll("_", " ");
+        var devicePath = deviceTag.location().path;
+        var deviceType = devicePath.split("/").pop().replace(/_/g, " ");
         text.add(Text.aqua(Utils.toTitleCase(deviceType)).append(Text.aqua(" Device")));
       }
     }

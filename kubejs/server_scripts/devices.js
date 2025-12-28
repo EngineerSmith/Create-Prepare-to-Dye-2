@@ -18,6 +18,7 @@ const DEVICE_GROUPS = {
     configKey: "config_deviceSturdy",
     defaultAmount: 8,
     devices: [
+      "quark:crate",
       "create:sticker",
       "create:schematicannon",
       "botania:open_crate",
