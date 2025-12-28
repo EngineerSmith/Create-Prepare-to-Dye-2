@@ -275,6 +275,7 @@
   "ptd.tooltip.ptdye.locomotive_device": "A _Locomotive Device_ can be converted through the _Personal Assembler [V] to open_ to many different train and railway devices like the _Track Station_, the _Train Controls_, the _Signals_ and many more! Any device of that type can be converted back to a _Locomotive Device_ in the inventory crafting grid",
   "ptd.tooltip.ptdye.red_stringed_device": "A _Red Stringed Device_ can be converted through the _Personal Assembler [V] to open_ to many different Botania red string devices! Any device of that type can be converted back to a _Red Stringed Device_ in the inventory crafting grid",
   "ptd.tooltip.ptdye.furnished_device": "A _Furnished Device_ can be converted through the _Personal Assembler [V] to open_ to many different wooden and furniture devices like _Doors_, _Signs_, _Beds_ and many more! Any device of that type can be converted back to a _Furnished Device_ in the inventory crafting grid",
+  "ptd.tooltip.ptdye.hammer": "_Right-click_ or _break_ devices to deconstruct them into their _generic form_. Drops go _directly to inventory_",
 
   "ptd.tooltip.disabled_item": "This item was removed from the game. If you acquired it in Automation mode, please contact the Create: Prepare to Dye developers on Discord or Github"
 }

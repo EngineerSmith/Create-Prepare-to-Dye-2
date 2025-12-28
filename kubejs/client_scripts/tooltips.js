@@ -79,6 +79,7 @@ const TOOLTIP_MAPPINGS = {
   "ptdye:locomotive_device": "ptd.tooltip.ptdye.locomotive_device",
   "ptdye:red_stringed_device": "ptd.tooltip.ptdye.red_stringed_device",
   "ptdye:furnished_device": "ptd.tooltip.ptdye.furnished_device",
+  "ptdye:hammer": "ptd.tooltip.ptdye.hammer",
 };
 
 // AE2 smart cables - all colors
