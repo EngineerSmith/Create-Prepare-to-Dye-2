@@ -1,0 +1,22 @@
+## [1.235.0](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/compare/1.234.0...1.235.0) (2025-12-28)
+
+
+### Features
+
+* block breakspeed modifications ([1e56fe9](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/commit/1e56fe9fe334e38f9dfbb2f7e485db36693c848b))
+* port Custom spout filling behaviors ([0400bd9](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/commit/0400bd9b0c30096e965941aa6b26b46445ade5c8))
+* port hammer and make it not use hardoded maps ([c11f18e](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/commit/c11f18eaf1e8a65ddba24e0b6af8cf1aa930d01c))
+* port Indestructibles ([b9cf49b](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/commit/b9cf49bb8fa35e28a57f37ba0918b1d6e720282b))
+* port stacksize changes ([ac10e5d](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/commit/ac10e5db5ff389c452b25df9227eb7ba8dfdf428))
+
+
+### Fixes
+
+* reorder scripts ([14d2ce9](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/commit/14d2ce9b3542e8c3c641a13e4fd0ab794e6b5c62))
+
+
+### chores
+
+* autopublish 2025-12-28T18:58:54Z ([f62cb3f](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/commit/f62cb3f545335b5e817e8ee7f56f87e255a82223))
+
+
