@@ -288,7 +288,6 @@ ServerEvents.recipes((event) => {
   );
 
   // ORE - calcite to bone meal/cobblestone/quartz
-  event.remove({ id: "create:milling/calcite" });
   event.recipes.create.crushing(
     [
       Item.of("minecraft:bone_meal").withChance(0.20),

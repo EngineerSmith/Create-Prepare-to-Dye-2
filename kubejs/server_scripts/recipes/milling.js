@@ -181,7 +181,8 @@ ServerEvents.recipes((event) => {
   // ORE - redstone ore to redstone
   event.recipes.create.milling("7x minecraft:redstone", "minecraft:redstone_ore");
 
-  // ORE - calcite to bone meal
+  // ORE - calcite to bone meal (replaces default)
+  event.remove({ id: "create:milling/calcite" });
   event.recipes.create.milling(
     [Item.of("minecraft:bone_meal").withChance(0.40)],
     "minecraft:calcite"

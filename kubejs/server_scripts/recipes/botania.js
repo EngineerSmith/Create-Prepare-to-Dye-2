@@ -18,6 +18,15 @@ ServerEvents.recipes((event) => {
     mana: 300,
   });
 
+  // DYE - yellow from any dye with full bee nest
+  event.custom({
+    type: "botania:mana_infusion",
+    input: { tag: "forge:dyes" },
+    output: { item: "minecraft:yellow_dye" },
+    mana: 300,
+    catalyst: { type: "state", block: "minecraft:bee_nest", state: { honey_level: "5" } },
+  });
+
   event.custom({
     type: "botania:mana_infusion",
     input: { item: "minecraft:sugar_cane" },
