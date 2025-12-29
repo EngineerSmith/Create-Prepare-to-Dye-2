@@ -19,16 +19,16 @@ Converting old scripts from `kubejs.old/` to the new standard approach.
 - [x] disable_saplings.js -> recipe_removals.js
 - [x] dye.js -> already ported to crafting.js, milling.js, crushing.js, filling.js, mixing.js, botania.js (added yellow from bee_nest)
 - [x] convert fuel in diesel generator recipes to new version -> diesel_generators.js
-- [ ] enchantments.js
+- [x] enchantments.js -> sequenced_assembly.js (dynamic enchanted book combining)
 - [x] food.js -> sequenced_assembly.js (already ported)
 - [x] hammer.js -> hammer.js (device deconstruction + block pickup)
 - [x] handInteractions.js -> player_tweaks.js (bucket filling for diesel engine/spout)
 - [x] immovable.js -> tags.js
-- [ ] indestructible.js
+- [x] indestructible.js -> block_tweaks.js (never despawn), startup/indestructible.js (fire resistant)
 - [x] ingotReplacement.js -> tags.js (iron/brass tag replacements)
 - [x] items.js (empty file)
 - [x] manapool.js -> manapool.js (alchemy->blaze burner, single crafting->mana pool)
-- [x] milk.js -> tags.js (milk fluid/block tags), TODO: milk cooldown behavior
+- [x] milk.js -> tags.js (milk fluid/block tags), player_tweaks.js (milk cooldown), botania.js (flowing milk pure daisy)
 - [x] mill_crush.js -- already ported to milling.js and crushing.js
 - [x] monsterFertilizer.js -- skipped, entirely commented out
 - [x] noWaterCheat.js -> block_tweaks.js
@@ -115,7 +115,7 @@ Converting old scripts from `kubejs.old/` to the new standard approach.
 - [x] jei.js -> emi.js (hide colored variants)
 - [x] lang.helpers.js -- skipped, old tooltip system replaced
 - [x] lang.js -> emi.js (EMI info page generation), tooltip system replaced
-- [ ] milkNerf.js -- milk cooldown not ported yet
+- [x] milkNerf.js -> client_tweaks.js (bucket entity interaction cancellation)
 - [x] modpack_utils.js -- skipped, utility for lang.js
 - [x] noWaterCheat.js -> client_tweaks.js (glass bottle cancellation)
 - [ ] ponders/ (folder - 3 files) -- ponder system not ported
