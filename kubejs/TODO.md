@@ -14,10 +14,10 @@ Converting old scripts from `kubejs.old/` to the new standard approach.
 - [x] crafty-crate-tweaks.js -> recipe_removals.js
 - [x] createDiselGenerators.js -> recipe_removals.js (items), cutting.js (wood chips), mixing.js (fermented blob/slime), diesel_generators.js (fermenting/distillation)
 - [x] deadPlanet.js -> crushing.js, milling.js, compacting.js, mixing.js, filling.js, botania.js (pure daisy + runic altar), lychee.js
-- [ ] developerCommands.js
+- [x] developerCommands.js -> commands.js (/getcrate - op-only crate with items)
 - [x] diamondToolsSilkTouch.js -> block_tweaks.js
 - [x] disable_saplings.js -> recipe_removals.js
-- [ ] dye.js
+- [x] dye.js -> already ported to crafting.js, milling.js, crushing.js, filling.js, mixing.js, botania.js (added yellow from bee_nest)
 - [x] convert fuel in diesel generator recipes to new version -> diesel_generators.js
 - [ ] enchantments.js
 - [x] food.js -> sequenced_assembly.js (already ported)
