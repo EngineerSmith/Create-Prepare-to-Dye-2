@@ -26,7 +26,7 @@ hash = "48981474996310a7861d97b5aaea8a11ba16d6075c273766daab566848930c09"
 
 [[files]]
 file = "VERSION"
-hash = "e2bc3cc1c740a2f50b593c2066c93e8af0d2c2477b2df8be11ecf18d5fbb997b"
+hash = "c1701e7e500123f7de4ae025955d73e5b036f633a81874e03eb24806a985607c"
 
 [[files]]
 file = "config/MouseTweaks.cfg"
@@ -470,7 +470,7 @@ hash = "e6692fd7c3b5d4db82c9836c81b02182500bb00c81817919120f514df2bc7f00"
 
 [[files]]
 file = "config/modpack-update-checker/config.json"
-hash = "3298138e6d87f3cde9a4161bdd59ad743538612425998c320500ddad1120b870"
+hash = "79630796c6732b86bff216509a8d71b464e74bde98cfef09108f514e2ea67587"
 
 [[files]]
 file = "config/modpack-update-checker/modpack-info.txt"
@@ -3606,7 +3606,7 @@ hash = "ded1b3b51c1b47ee3e812ef73dfb4dd423dec7119ed921585bed038c95328c0d"
 
 [[files]]
 file = "kubejs/assets/sdrp/lang/en_us.json"
-hash = "9f1467d4ade94676e3fbfe01985ef84365aa32ae5b36bdd62ee57aa19e34ad0b"
+hash = "433db7ce39e1cda76ec9ec4981955077a874d026c8f06f83fbc05e99ab5f5770"
 
 [[files]]
 file = "kubejs/assets/storagedrawers/blockstates/controller.json"
@@ -4430,7 +4430,7 @@ hash = "f1f12f39e90b73a8ff3fb9c4e05116ac0f597f809105af3cc7655af98a64611c"
 
 [[files]]
 file = "kubejs/server_scripts/chunk_territory_enforce.js"
-hash = "b868cd644ab820ee0a5accb1ac7ab5654da51017df54d0acb223b95caae44ae4"
+hash = "caeda86ad6801e340bd07f896c535888bfaf9833a3e37c7d7f9254ed0b9319b9"
 
 [[files]]
 file = "kubejs/server_scripts/commands.js"
@@ -4610,7 +4610,7 @@ hash = "ab323610254d7b8ce09ca2580b344714c58fd4804d26ee0e2525baa24a148809"
 
 [[files]]
 file = "modpack-update-checker/meta.json"
-hash = "fb980ecf4e8aabcc34598f12acc6199417061952f0f09a17df345273e527727b"
+hash = "f365d7d8fce7297b3fd3b7edd24b0328e54f80f3cacabccf565dcbe35b04302b"
 
 [[files]]
 file = "modpack-update-checker/versions/1.100.0/changelog.txt"
@@ -6803,6 +6803,10 @@ hash = "f2d514eb80f5adb10e4f75e67911f56ab7650614a9f63f3f2c65ef1047cb5237"
 [[files]]
 file = "modpack-update-checker/versions/1.244.0/changelog.txt"
 hash = "259673c3cbb668dcdb15572058a54165d45ff76fd010f9c001b43fa1b735d122"
+
+[[files]]
+file = "modpack-update-checker/versions/1.244.1/changelog.txt"
+hash = "90142aefd85ac7cb99e684d339550853f8d15ffaeef974d7b0273ed5fb641b54"
 
 [[files]]
 file = "modpack-update-checker/versions/1.79.33/changelog.txt"

@@ -1,0 +1,13 @@
+### [1.244.1](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/compare/1.244.0...1.244.1) (2025-12-30)
+
+
+### Fixes
+
+* no teritory by default to ease dev ([a9f56f9](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/commit/a9f56f90c8c3e9ad149b1435f38c7a6c7ea1bccb))
+
+
+### chores
+
+* autopublish 2025-12-30T08:16:54Z ([d2f0389](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/commit/d2f03898c14106f1cc989f13438ef3590701bd73))
+
+
