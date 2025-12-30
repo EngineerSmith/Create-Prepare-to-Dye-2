@@ -12,6 +12,21 @@ PlayerEvents.tick(function(event) {
         // if (player.hasPermissions(2)) return;
 
         var uuid = player.uuid.toString();
+
+        // If no territories are registered, do nothing (and un-stick players we forced into spectator).
+        var chunks = global.ChunkTerritory.chunks;
+        var hasAny = chunks && Object.keys(chunks).length > 0;
+        if (!hasAny) {
+            if (playerWasOutside[uuid]) {
+                playerWasOutside[uuid] = false;
+                if (player.spectator) {
+                    player.setGameMode('survival');
+                    player.tell('Territory enforcement disabled (no territories registered)');
+                }
+            }
+            return;
+        }
+
         var cx = player.chunkPosition().x;
         var cz = player.chunkPosition().z;
 
@@ -60,6 +75,8 @@ PlayerEvents.tick(function(event) {
 PlayerEvents.tick(function(event) {
     try {
         if (!global.ChunkTerritory) return;
+        var chunks = global.ChunkTerritory.chunks;
+        if (!chunks || Object.keys(chunks).length === 0) return;
 
         var tick = event.server.tickCount;
         if (tick % 5 !== 0) return;  // 4 times per second
@@ -149,6 +166,8 @@ function spawnBorder(player, x, y, z, axis, direction, playSound) {
 BlockEvents.placed(function(event) {
     try {
         if (!global.ChunkTerritory) return;
+        var chunks = global.ChunkTerritory.chunks;
+        if (!chunks || Object.keys(chunks).length === 0) return;
         var player = event.entity;
         if (!player || !player.isPlayer()) return;
         // if (player.hasPermissions(2)) return;
@@ -167,6 +186,8 @@ BlockEvents.placed(function(event) {
 BlockEvents.broken(function(event) {
     try {
         if (!global.ChunkTerritory) return;
+        var chunks = global.ChunkTerritory.chunks;
+        if (!chunks || Object.keys(chunks).length === 0) return;
         var player = event.entity;
         if (!player || !player.isPlayer()) return;
         // if (player.hasPermissions(2)) return;
