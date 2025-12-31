@@ -22,7 +22,8 @@
     "com.example.personalmesystem.client.gui.PersonalMEScreen": true,
     "io.github.mortuusars.wares.client.gui.agreement.AgreementScreen": true,
     "com.jaquadro.minecraft.storagedrawers.inventory.FramingTableScreen": true,
-    "org.violetmoon.quark.addons.oddities.client.screen.CrateScreen": true
+    "org.violetmoon.quark.addons.oddities.client.screen.CrateScreen": true,
+    "io.github.mortuusars.wares.client.gui.screen.DeliveryTableScreen": true
   },
   "hideBackground": {
     "dev.emi.emi.screen.RecipeScreen": true,
@@ -32,6 +33,7 @@
     "top.theillusivec4.curios.client.gui.CuriosScreenV2": true,
     "com.example.personalmesystem.client.gui.PersonalMEScreen": true,
     "io.github.mortuusars.wares.client.gui.agreement.AgreementScreen": true,
-    "org.violetmoon.quark.addons.oddities.client.screen.CrateScreen": true
+    "org.violetmoon.quark.addons.oddities.client.screen.CrateScreen": true,
+    "io.github.mortuusars.wares.client.gui.screen.DeliveryTableScreen": true
   }
 }

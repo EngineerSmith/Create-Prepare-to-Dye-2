@@ -52,7 +52,6 @@ config/jade/sort-order.json
 /mods/assets/
 /mods/data/
 /mods/META-INF/
-/mods/botania*
 /mods/pack.mcmeta
 /mods/logo.png
 /kubejs/probe/
