@@ -1,0 +1,14 @@
+## [1.246.0](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/compare/1.245.3...1.246.0) (2025-12-31)
+
+
+### Features
+
+* add Trading Transceiver with falling sand temp ([369eac4](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/commit/369eac4da8158eb6e2d000e5255dbf92e2c7b5d3))
+* expand territory enforcement and add item bounce ([ce3b79a](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/commit/ce3b79a45e8bc944707bb98081ccceca9f1d808a))
+
+
+### chores
+
+* autopublish 2025-12-31T13:58:03Z ([ce2473b](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/commit/ce2473b734f433de53e83a7736661e5fae65ae00))
+
+
