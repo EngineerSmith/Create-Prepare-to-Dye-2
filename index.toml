@@ -1,10 +1,6 @@
 hash-format = "sha256"
 
 [[files]]
-file = ".claude/settings.local.json"
-hash = "4b42c374d9a88a08a602e7c64c464cd782d38c6893aed1c8162b4845505d93e4"
-
-[[files]]
 file = ".deepsource.toml"
 hash = "93f48d4a64e2c78f3f421118723c497abf90339fc248efd0aebc37cffd45918f"
 
@@ -30,7 +26,7 @@ hash = "48981474996310a7861d97b5aaea8a11ba16d6075c273766daab566848930c09"
 
 [[files]]
 file = "VERSION"
-hash = "be73f5bc03b372a4881c3902107a39f081c827ddeaaedc472c4d54f04d26f3c3"
+hash = "6888f56d310af259279ea64ca577ffe73be094bba67b5ce882d0c35c8fdfa490"
 
 [[files]]
 file = "config/MouseTweaks.cfg"
@@ -358,7 +354,7 @@ hash = "14eb4e8cd105c580403c4e5bc6bba831c81aedcf4e6e04485c74e9d3f253689f"
 
 [[files]]
 file = "config/forgery/features.ini"
-hash = "243f55f0e43f5a1ce7ee39711eb88fc7d945bbe662861686c567e0bde3f7caca"
+hash = "61ed58ce1ab3cf3c570d27eea8dd88b3cdb539e6743c1d79f4c6c2da27a959f5"
 
 [[files]]
 file = "config/forgery/fscript.ini"
@@ -409,10 +405,6 @@ file = "config/invmove/cloth-config.json"
 hash = "65242c90d0248278a7d2293b4ac8e531ba9d9981255a4c81f938b077b58c79f2"
 
 [[files]]
-file = "config/invmove/emi.json"
-hash = "65242c90d0248278a7d2293b4ac8e531ba9d9981255a4c81f938b077b58c79f2"
-
-[[files]]
 file = "config/invmove/jei.json"
 hash = "65242c90d0248278a7d2293b4ac8e531ba9d9981255a4c81f938b077b58c79f2"
 
@@ -453,10 +445,6 @@ file = "config/jade/plugins.json"
 hash = "53fd0dcefccd51e7a26c17be1c8099b36b9000f0a27c121101a10a54084aaf59"
 
 [[files]]
-file = "config/jade/sort-order.json"
-hash = "b7b4020c9932d32ca40924c6dc57fcc6b84e3e890643f9e694a13034b0c5da23"
-
-[[files]]
 file = "config/jei/blacklist.cfg"
 hash = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 
@@ -481,24 +469,8 @@ file = "config/jupiter.json"
 hash = "e6692fd7c3b5d4db82c9836c81b02182500bb00c81817919120f514df2bc7f00"
 
 [[files]]
-file = "config/konkrete/locals/de_de.local"
-hash = "79a34cfd15c2d9c06498dc221be79279507d9b57666cd44f8d2c2cf95d3582ef"
-
-[[files]]
-file = "config/konkrete/locals/en_us.local"
-hash = "fdf1864fd049b3f1b9af1f8db6c5125a627be7d06a451c778da3329843d3c39a"
-
-[[files]]
-file = "config/konkrete/locals/pl_pl.local"
-hash = "d38a7776e362e4de6082078d803c1c9358d9d40526edfe4bdfd29c552aef76d8"
-
-[[files]]
-file = "config/konkrete/locals/pt_br.local"
-hash = "dca55a2792451b31424cd5c24037141ec57cdca51955d062dd908fa9ca6a3e9c"
-
-[[files]]
 file = "config/modpack-update-checker/config.json"
-hash = "a6dc2a24bcaa73104df6af7503ccfa4c3f0930a7c4cda4c753373e2dd0bfc95a"
+hash = "345dd0534cf24b340ad8c7ae628a835ecd55fca86c373a2963ea6093de0b2cab"
 
 [[files]]
 file = "config/modpack-update-checker/modpack-info.txt"
@@ -637,14 +609,6 @@ file = "discord-mark-white.png"
 hash = "3e862997885fc898199365b6907ddd71b9297e2a56b845fa9bfbbd3663600a36"
 
 [[files]]
-file = "emi.json"
-hash = "5966452a1c567b3e2ce9eb75d8440bed9a7855f93f9540251dfb79bbf996220a"
-
-[[files]]
-file = "fancymenu_data/action_favorites.json"
-hash = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-
-[[files]]
 file = "fancymenu_data/action_panel.png"
 hash = "ab88953017b0508e198b49e1e836d93950e5388d16205c2ea3a69392c9ed554f"
 
@@ -671,18 +635,6 @@ hash = "2d27ac04fcefde732e1df11e8ecd1af91b0c1344da4a505ef1ce51bc1b5e23ce"
 [[files]]
 file = "fancymenu_data/background.png"
 hash = "fd6e3a011492b262710ff526e0cde49bb90d27e558eff284f38342e2e8994391"
-
-[[files]]
-file = "fancymenu_data/buddy/buddy_leveling.json"
-hash = "c79892b2e4d4e3d88bf708dd43000ede9759728a1f612d58acc26b7d984f8b50"
-
-[[files]]
-file = "fancymenu_data/buddy/buddy_save.json"
-hash = "cbca0250afee3cc00e6a516c9f908c8a1ee58016df64daf61cdcfab6eeaf9129"
-
-[[files]]
-file = "fancymenu_data/last_world.fmdata"
-hash = "eca9ec4824b7dab8c2bef765c0e919a732bf48d4053639a1493369c14d9da177"
 
 [[files]]
 file = "fancymenu_data/pipes.png"
@@ -3654,7 +3606,7 @@ hash = "ded1b3b51c1b47ee3e812ef73dfb4dd423dec7119ed921585bed038c95328c0d"
 
 [[files]]
 file = "kubejs/assets/sdrp/lang/en_us.json"
-hash = "f3c20f795bb6344d65ab1f610d014534c02854fc33b303313a7609dacf1080dd"
+hash = "85c85358f399fe466ec1349a2f95c52614a0af441537387a28a86fd007674ec0"
 
 [[files]]
 file = "kubejs/assets/storagedrawers/blockstates/controller.json"
@@ -4658,7 +4610,7 @@ hash = "ab323610254d7b8ce09ca2580b344714c58fd4804d26ee0e2525baa24a148809"
 
 [[files]]
 file = "modpack-update-checker/meta.json"
-hash = "164f4afa7e6d5bfca06e9fe90c59f3fd6a5587cc3ca88ebaa09fc3798bda9cc0"
+hash = "3d60835e66ea94baab00e77942c95060626930d3d05e1b19710ba9414116031d"
 
 [[files]]
 file = "modpack-update-checker/versions/1.100.0/changelog.txt"
@@ -6861,6 +6813,10 @@ file = "modpack-update-checker/versions/1.245.0/changelog.txt"
 hash = "8587e64013bbc1359a9ae70e1f3cdee61385a9b31e797e630f9d062b11314246"
 
 [[files]]
+file = "modpack-update-checker/versions/1.245.3/changelog.txt"
+hash = "b701cd48a9ba16e896d908ade0141c75ac40eca1032a135f098ea3cfe4a4f685"
+
+[[files]]
 file = "modpack-update-checker/versions/1.79.33/changelog.txt"
 hash = "3ffee41ebf2c4f32db44a257c726f8496cc33446635821d2cf364ce80a6bef3e"
 
@@ -7433,7 +7389,7 @@ metafile = true
 
 [[files]]
 file = "mods/lootjs.pw.toml"
-hash = "e57ad3496f6185470581e5a3ec1a6ceb09d8cf88ccde6305c5e464332d0fe867"
+hash = "dac76b57fd114d37956011ad054aab6b5e86f1fd9e308da534bff0ca69a78989"
 metafile = true
 
 [[files]]
