@@ -227,7 +227,14 @@ ServerEvents.recipes(function(event) {
   for (var i = 0; i < relics.length; i++) {
     event.remove({ output: relics[i] });
   }
-
+  // BOTANIA - Flowers that don't fit
+  var flowers = [
+    "botania:solensolegnolia", "botania:solegnolia_chibi", "botania:floating_solensolegnolia", "botania:floating_solegnolia",
+    "botania:bubbell", "botania:bubbell_chibi", "botania:floating_bubbell", "botania:floating_bubbell_chibi",
+  ]
+  for (var i = 0; i < flowers.length; i++) {
+    event.remove({ output: flowers[i] });
+  }
   // BOTANIA - Non-useful rods (keep dirt_rod, tornado_rod, rainbow_rod)
   var rods = [
     "botania:missile_rod", "botania:cobble_rod",
