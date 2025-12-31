@@ -1,7 +1,10 @@
 // Chunk Territory Enforcement
+// Handles spectator mode, border visuals, block protection, and item containment
 
 var playerWasOutside = {};
 var lastBorderSound = {};
+
+// UTILITY FUNCTIONS
 
 function hasTerritory() {
     return global.ChunkTerritory &&
@@ -26,7 +29,15 @@ function denyEffect(server, name, x, y, z) {
     server.runCommandSilent('playsound minecraft:block.note_block.bass master ' + name + ' ' + x + ' ' + y + ' ' + z + ' 0.5 0.5');
 }
 
-// Spectator mode enforcement
+function intArrayToUuid(arr) {
+    function toHex(n) { return ((n >>> 0).toString(16)).padStart(8, '0'); }
+    var hex = toHex(arr[0]) + toHex(arr[1]) + toHex(arr[2]) + toHex(arr[3]);
+    return hex.substring(0,8) + '-' + hex.substring(8,12) + '-' + hex.substring(12,16) + '-' + hex.substring(16,20) + '-' + hex.substring(20,32);
+}
+
+// SPECTATOR MODE ENFORCEMENT
+// Players in unowned chunks are forced into spectator mode
+
 PlayerEvents.tick(function(event) {
     if (!global.ChunkTerritory) return;
 
@@ -35,6 +46,7 @@ PlayerEvents.tick(function(event) {
 
     var uuid = player.uuid.toString();
 
+    // Restore survival if no territory exists
     if (!hasTerritory()) {
         if (playerWasOutside[uuid] && player.spectator) {
             playerWasOutside[uuid] = false;
@@ -49,12 +61,14 @@ PlayerEvents.tick(function(event) {
     var owns = global.ChunkTerritory.owns(uuid, cx, cz);
     var wasOutside = playerWasOutside[uuid] || false;
 
+    // Entered unowned chunk -> spectator
     if (!owns && !wasOutside) {
         playerWasOutside[uuid] = true;
         player.setGameMode('spectator');
         player.tell('You do not own this chunk');
         playSound(player, 'minecraft:block.respawn_anchor.charge', player.x, player.y, player.z, 1, 0.5);
     }
+    // Returned to owned chunk -> survival (with safe teleport)
     else if (owns && wasOutside) {
         playerWasOutside[uuid] = false;
 
@@ -74,7 +88,9 @@ PlayerEvents.tick(function(event) {
     }
 });
 
-// Border particles
+// BORDER PARTICLES
+// Red dust particles at chunk boundaries between owned/unowned territory
+
 PlayerEvents.tick(function(event) {
     if (!hasTerritory()) return;
     if (event.server.tickCount % 4 !== 0) return;
@@ -138,7 +154,9 @@ function spawnBorderLine(player, borderPos, y, rangeMin, rangeMax, axis, directi
     }
 }
 
-// Block protection
+// BLOCK PROTECTION
+// Prevents placing, breaking, and interacting with blocks in unowned chunks
+
 function checkBlockAccess(event) {
     if (!hasTerritory()) return true;
     var player = event.entity;
@@ -188,6 +206,79 @@ BlockEvents.rightClicked(function(event) {
     if (!global.ChunkTerritory.owns(player.uuid.toString(), cx, cz)) {
         denyBlock(event, player);
     }
+});
+
+// ITEM CONTAINMENT
+// Bounces thrown items back when they would cross into unowned territory
+
+EntityEvents.spawned('minecraft:item', function(event) {
+    if (!hasTerritory()) return;
+
+    var item = event.entity;
+    if (item.level.isClientSide()) return;
+
+    var nbt = item.nbt;
+    if (!nbt || !nbt.Thrower || !nbt.Motion) return;
+
+    var throwerUuid = intArrayToUuid(nbt.Thrower);
+    var cx = Math.floor(item.x / 16);
+    var cz = Math.floor(item.z / 16);
+
+    if (!global.ChunkTerritory.owns(throwerUuid, cx, cz)) return;
+
+    var motionX = nbt.Motion[0], motionZ = nbt.Motion[2];
+    var localX = item.x - cx * 16, localZ = item.z - cz * 16;
+
+    // Predict trajectory (8 ticks with drag)
+    var predictX = localX + motionX * 8;
+    var predictZ = localZ + motionZ * 8;
+
+    var bounceX = false, bounceZ = false;
+
+    if (predictX < 0.5 && !global.ChunkTerritory.owns(throwerUuid, cx - 1, cz)) bounceX = true;
+    else if (predictX > 15.5 && !global.ChunkTerritory.owns(throwerUuid, cx + 1, cz)) bounceX = true;
+
+    if (predictZ < 0.5 && !global.ChunkTerritory.owns(throwerUuid, cx, cz - 1)) bounceZ = true;
+    else if (predictZ > 15.5 && !global.ChunkTerritory.owns(throwerUuid, cx, cz + 1)) bounceZ = true;
+
+    if (!bounceX && !bounceZ) return;
+
+    var server = event.server;
+    var itemUuid = item.uuid.toString();
+
+    // Monitor item and bounce when it reaches the border
+    function checkBorder(tick) {
+        if (tick > 40) return;
+
+        server.scheduleInTicks(tick, function() {
+            var entities = server.getLevel('minecraft:overworld').getEntities().filter(function(e) {
+                return e.uuid.toString() === itemUuid;
+            });
+            if (entities.length === 0) return;
+
+            var e = entities[0];
+            var ecx = Math.floor(e.x / 16), ecz = Math.floor(e.z / 16);
+            var elocalX = e.x - ecx * 16, elocalZ = e.z - ecz * 16;
+
+            var atBorder = false, bX = false, bZ = false;
+
+            if (bounceX && ((elocalX < 1 && motionX < 0) || (elocalX > 15 && motionX > 0))) { atBorder = true; bX = true; }
+            if (bounceZ && ((elocalZ < 1 && motionZ < 0) || (elocalZ > 15 && motionZ > 0))) { atBorder = true; bZ = true; }
+
+            if (atBorder) {
+                var curMotion = e.nbt.Motion;
+                if (!curMotion) return;
+                var nx = bX ? (-curMotion[0] * 0.5) : curMotion[0];
+                var nz = bZ ? (-curMotion[2] * 0.5) : curMotion[2];
+                server.runCommandSilent('data modify entity ' + itemUuid + ' Motion set value [' + nx + 'd,' + (curMotion[1] + 0.1) + 'd,' + nz + 'd]');
+                server.runCommandSilent('playsound minecraft:block.slime_block.hit block @a ' + e.x + ' ' + e.y + ' ' + e.z + ' 0.5 1.2');
+            } else {
+                checkBorder(tick + 2);
+            }
+        });
+    }
+
+    checkBorder(2);
 });
 
 console.log('[territory] Enforce script loaded');
