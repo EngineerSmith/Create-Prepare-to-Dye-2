@@ -1,0 +1,23 @@
+## [1.247.0](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/compare/1.246.0...1.247.0) (2025-12-31)
+
+
+### Features
+
+* improve chunk_territory_enforce ([9d35596](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/commit/9d35596c911ad114b4d09a22b6cc2df61aefb90a))
+* make trading tranciever show closest border ([ca74c3f](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/commit/ca74c3f0329de26954ac0dd9156590afec3ad3b2))
+* port botaniaDebookified tooltips ([b4fec80](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/commit/b4fec80c1af67c77b11fb6e5a1c33f607f730081))
+* remove solensolegnolia and bubbell ([b7efaa7](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/commit/b7efaa7f7eb93dd3d7a65a54b9cbf95e6130b7d2))
+* tooltip engine ([079e10b](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/commit/079e10b19bcfa76be9e0b4206f794faf1c13b4e3))
+
+
+### Fixes
+
+* update lang files ([3840438](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/commit/38404383d09f5aff0cd12ce00d202d11aed480fa))
+* wrong info in milk tooltip ([5e216c0](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/commit/5e216c0bd750dced2c96578db37f362e61f23ed1))
+
+
+### chores
+
+* autopublish 2025-12-31T15:37:48Z ([5a6b559](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/commit/5a6b5598d7f48352d2514b818f956280d616a737))
+
+
