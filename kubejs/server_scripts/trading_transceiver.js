@@ -65,12 +65,16 @@ ItemEvents.rightClicked('ptdye:trading_transceiver', function(event) {
     var server = event.server;
 
     if (storedAgreement) {
-        // Restore stored agreement
-        var agreementString = storedAgreement.toString();
+        // Restore stored agreement using item replace (same as default)
+        var itemId = storedAgreement.getString('id');
+        var itemTag = storedAgreement.get('tag');
+        var tagString = itemTag ? itemTag.toString() : '';
+
+        var cmd = 'item replace block ' + landX + ' ' + landY + ' ' + landZ + ' container.0 with ' + itemId + tagString;
+        console.log('[transceiver] Restoring: ' + cmd);
+
         server.scheduleInTicks(120, function() {
-            server.runCommandSilent(
-                'data modify block ' + landX + ' ' + landY + ' ' + landZ + ' Items[0] set value ' + agreementString
-            );
+            server.runCommandSilent(cmd);
         });
     } else {
         // Default agreement for new transceivers
