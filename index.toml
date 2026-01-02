@@ -1250,7 +1250,7 @@ hash = "48981474996310a7861d97b5aaea8a11ba16d6075c273766daab566848930c09"
 
 [[files]]
 file = "VERSION"
-hash = "157b36a1043e1b0bd5e7c544a7d635c827f9925e54bc558308591d1e55490a55"
+hash = "a791f154127668fa1c811a99f00a58e28e6ffbe5b0e6209f6b497caa0f861d14"
 
 [[files]]
 file = "config/MouseTweaks.cfg"
@@ -1694,7 +1694,7 @@ hash = "e6692fd7c3b5d4db82c9836c81b02182500bb00c81817919120f514df2bc7f00"
 
 [[files]]
 file = "config/modpack-update-checker/config.json"
-hash = "b740ba21acfa3c91f92d2bc32fe15beb5073691f5a9043c2464f519e1958a785"
+hash = "e309641a038eae564239afe552bd619c5132f8de364b33f7837497112eb27b9e"
 
 [[files]]
 file = "config/modpack-update-checker/modpack-info.txt"
@@ -4830,7 +4830,7 @@ hash = "ded1b3b51c1b47ee3e812ef73dfb4dd423dec7119ed921585bed038c95328c0d"
 
 [[files]]
 file = "kubejs/assets/sdrp/lang/en_us.json"
-hash = "20012b6a91233d33431a05cc0d7c0bf4bdf001d753cf2cdedabf7e3eb66e7fc1"
+hash = "14ff9bd098a05561c964ca5c2211ce2987a9b07f62050cef11ba40cf43084729"
 
 [[files]]
 file = "kubejs/assets/storagedrawers/blockstates/controller.json"
@@ -5657,8 +5657,8 @@ file = "kubejs/server_scripts/chicken_eggs.js"
 hash = "2aed96c56bf27ffc34ebaa82ee685b195db033a2e43813eb1ea2ec924657a3df"
 
 [[files]]
-file = "kubejs/server_scripts/chunk_territory_commands.js"
-hash = "b16a3ff0503fab189715fdd1a007e01643c9d331ca6ff4a59b10effec858cbcf"
+file = "kubejs/server_scripts/chunk_territory.js"
+hash = "18d48f1061a019fab9089d44fde7443d7eb24129cf4928511f35ce87650c8462"
 
 [[files]]
 file = "kubejs/server_scripts/chunk_territory_enforce.js"
@@ -5794,11 +5794,15 @@ hash = "b87ef151e9c7499314fb005d1ec8443b0099beac4bb3e25bbe5c347cead5ffff"
 
 [[files]]
 file = "kubejs/server_scripts/trading_transceiver.js"
-hash = "06e643b5e6086faf6aaf06ff03f5be698c6d70f6e5963da5d30859a4809b28f1"
+hash = "e65e8eb3b93e3a387092d0133be616c115c92b8f6099778748797b9b3e33f492"
 
 [[files]]
 file = "kubejs/server_scripts/variants.js"
 hash = "051e264fd617ee85c49a88ffaf6fd13111c0271c65c71450bdef31a75c2dab79"
+
+[[files]]
+file = "kubejs/server_scripts/wares.js"
+hash = "ad52826645f8c2f7defd5f109ed14c524b67c5c71342ac9a0e6dbe55cd63e9b1"
 
 [[files]]
 file = "kubejs/startup_scripts/advjs_startup.js"
@@ -5850,7 +5854,7 @@ hash = "ab323610254d7b8ce09ca2580b344714c58fd4804d26ee0e2525baa24a148809"
 
 [[files]]
 file = "modpack-update-checker/meta.json"
-hash = "a4c82fbd59a1a5d3f8fa001e2990148d2f248a97c068b4b54880e32e2e748184"
+hash = "5b8ed2860e0c01ddb0d31a8065b0423265a956f5def985508ebae8062fb23854"
 
 [[files]]
 file = "modpack-update-checker/versions/1.100.0/changelog.txt"
@@ -8079,6 +8083,10 @@ hash = "60230b3ff2b0ecf11517310937dce839884bb3956ca765235857aa7eba8785e4"
 [[files]]
 file = "modpack-update-checker/versions/1.253.1/changelog.txt"
 hash = "e760b264bcb449a82a21fa555bea742110b45b3885fcf7a3e0bd98ece66f8580"
+
+[[files]]
+file = "modpack-update-checker/versions/1.254.0/changelog.txt"
+hash = "7c84a4f1cc1b52c052eeba7bcb1f4f73587ae9f5c673d351500ddaf57688c215"
 
 [[files]]
 file = "modpack-update-checker/versions/1.79.33/changelog.txt"

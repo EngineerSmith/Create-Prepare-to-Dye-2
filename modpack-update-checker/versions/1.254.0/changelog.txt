@@ -1,0 +1,14 @@
+## [1.254.0](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/compare/1.253.1...1.254.0) (2026-01-02)
+
+
+### Features
+
+* refactor chunk territory events ([bd6ac14](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/commit/bd6ac1409763b011439f00ec4e6c75b09b8d204f))
+* use new wares events for chunk expansion ([ffdcb57](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/commit/ffdcb5702b10b163236c2a37823504f17dec9591))
+
+
+### chores
+
+* autopublish 2026-01-02T18:52:01Z ([10c6cea](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/commit/10c6ceacacf4e99852a1c6e42eece254352dcece))
+
+
