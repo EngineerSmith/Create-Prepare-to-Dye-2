@@ -1501,7 +1501,7 @@
 		"Regrow Chance" = 3
 
 		[mobs.toretoise.dimensions]
-			"Is Blacklist" = false
+			"Is Blacklist" = true
 			Dimensions = ["minecraft:overworld"]
 
 		[mobs.toretoise.spawn_config]
