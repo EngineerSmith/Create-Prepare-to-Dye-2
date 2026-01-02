@@ -1,127 +1,80 @@
-// Chunk Territory Commands
+// Chunk Territory - Data layer and commands
 
 var IntegerArgumentType = Java.loadClass('com.mojang.brigadier.arguments.IntegerArgumentType');
 var EntityArgument = Java.loadClass('net.minecraft.commands.arguments.EntityArgument');
 
-// Initialize/update ChunkTerritory
 if (!global.ChunkTerritory) {
     global.ChunkTerritory = { chunks: {} };
 }
 
 var CT = global.ChunkTerritory;
 
-CT.owns = function(playerUuid, cx, cz) {
+CT.owns = function (playerUuid, cx, cz) {
     var data = CT.chunks[cx + ',' + cz];
     return data && data.uuid === playerUuid;
 };
 
-CT.getOwner = function(cx, cz) {
+CT.getOwner = function (cx, cz) {
     var data = CT.chunks[cx + ',' + cz];
     return data ? data.uuid : null;
 };
 
-CT.save = function(server) {
+CT.save = function (server) {
     try {
         var level = server.getLevel('minecraft:overworld');
         if (level) level.persistentData.putString('chunkTerritory', JSON.stringify(CT.chunks));
-    } catch (e) {
-        console.log('[territory] Save error: ' + e);
-    }
+    } catch (e) {}
 };
 
-CT.load = function(server) {
+CT.load = function (server) {
     try {
         var level = server.getLevel('minecraft:overworld');
         if (level && level.persistentData.contains('chunkTerritory')) {
             CT.chunks = JSON.parse(level.persistentData.getString('chunkTerritory'));
-            console.log('[territory] Loaded ' + Object.keys(CT.chunks).length + ' chunks');
         }
-    } catch (e) {
-        console.log('[territory] Load error: ' + e);
-    }
+    } catch (e) {}
 };
 
-ServerEvents.loaded(function (event) {
-    CT.load(event.server);
-});
+// Claim a chunk, returns { cx, cz, renewed }
+CT.claim = function (server, playerUuid, cx, cz, ticks, srcX, srcY, srcZ) {
+    var key = cx + ',' + cz;
+    var wasAlreadyClaimed = !!CT.chunks[key];
+    var expiryTick = ticks > 0 ? server.tickCount + ticks : null;
+    CT.chunks[key] = { uuid: playerUuid, expiry: expiryTick };
 
-// Expire chunks every second
-ServerEvents.tick(function (event) {
-    if (event.server.tickCount % 20 !== 0) return;
+    if (!wasAlreadyClaimed) {
+        var srcCx = Math.floor(srcX / 16), srcCz = Math.floor(srcZ / 16);
+        var alongX = (srcCx !== cx);
+        var borderPos, rangeMin, rangeMax;
 
-    var currentTick = event.server.tickCount;
-    for (var key in CT.chunks) {
-        var data = CT.chunks[key];
-        if (data.expiry && currentTick >= data.expiry) {
-            delete CT.chunks[key];
-            var parts = key.split(',');
-            var players = event.server.players;
-            for (var i = 0; i < players.size(); i++) {
-                var p = players.get(i);
-                if (p.uuid.toString() === data.uuid) {
-                    p.tell('Chunk [' + parts[0] + ', ' + parts[1] + '] expired');
-                    break;
-                }
-            }
+        if (alongX) {
+            borderPos = srcCx < cx ? cx * 16 : (cx + 1) * 16;
+            rangeMin = cz * 16;
+            rangeMax = (cz + 1) * 16;
+        } else {
+            borderPos = srcCz < cz ? cz * 16 : (cz + 1) * 16;
+            rangeMin = cx * 16;
+            rangeMax = (cx + 1) * 16;
         }
-    }
-});
 
-// Helpers
-function getChunk(pos) {
-    return { x: Math.floor(pos.x() / 16), z: Math.floor(pos.z() / 16) };
-}
-
-function addChunk(uuid, cx, cz, expiryTick) {
-    CT.chunks[cx + ',' + cz] = { uuid: uuid, expiry: expiryTick || null };
-}
-
-function spawnClaimParticles(server, cx, cz, srcX, srcY, srcZ) {
-    var srcCx = Math.floor(srcX / 16), srcCz = Math.floor(srcZ / 16);
-    var alongX = (srcCx !== cx); // border runs along X if chunks differ in X
-    var borderPos, rangeMin, rangeMax;
-
-    if (alongX) {
-        borderPos = srcCx < cx ? cx * 16 : (cx + 1) * 16;
-        rangeMin = cz * 16;
-        rangeMax = (cz + 1) * 16;
-    } else {
-        borderPos = srcCz < cz ? cz * 16 : (cz + 1) * 16;
-        rangeMin = cx * 16;
-        rangeMax = (cx + 1) * 16;
+        for (var i = rangeMin + 2; i < rangeMax - 1; i += 3) {
+            var px = alongX ? borderPos : i;
+            var pz = alongX ? i : borderPos;
+            var pdx = alongX ? 0.1 : 1.5, pdz = alongX ? 1.5 : 0.1;
+            server.runCommandSilent('particle dust 0 1 0 2 ' + px + ' ' + srcY + ' ' + pz + ' ' + pdx + ' 3 ' + pdz + ' 0 8 force');
+            server.runCommandSilent('particle dust 0.2 1 0.2 1.5 ' + px + ' ' + (srcY + 2) + ' ' + pz + ' ' + pdx + ' 2 ' + pdz + ' 0 5 force');
+        }
+        server.runCommandSilent('playsound minecraft:block.beacon.activate block @a ' + srcX + ' ' + srcY + ' ' + srcZ + ' 1 1.2');
     }
 
-    for (var i = rangeMin + 2; i < rangeMax - 1; i += 3) {
-        var x = alongX ? borderPos : i;
-        var z = alongX ? i : borderPos;
-        var dx = alongX ? 0.1 : 1.5, dz = alongX ? 1.5 : 0.1;
-        server.runCommandSilent('particle dust 0 1 0 2 ' + x + ' ' + srcY + ' ' + z + ' ' + dx + ' 3 ' + dz + ' 0 8 force');
-        server.runCommandSilent('particle dust 0.2 1 0.2 1.5 ' + x + ' ' + (srcY + 2) + ' ' + z + ' ' + dx + ' 2 ' + dz + ' 0 5 force');
-    }
-    server.runCommandSilent('playsound minecraft:block.beacon.activate block @a ' + srcX + ' ' + srcY + ' ' + srcZ + ' 1 1.2');
-}
+    return { cx: cx, cz: cz, renewed: wasAlreadyClaimed };
+};
 
-function claimChunk(ctx, target, dx, dz, ticks) {
-    var pos = ctx.source.position;
-    var chunk = getChunk(pos);
-    var cx = chunk.x + dx, cz = chunk.z + dz;
-    var expiryTick = ticks > 0 ? ctx.source.server.tickCount + ticks : null;
+// Claim the adjacent chunk nearest to source position
+CT.claimAdjacent = function (server, playerUuid, x, y, z, ticks) {
+    var cx = Math.floor(x / 16), cz = Math.floor(z / 16);
+    var localX = x - cx * 16, localZ = z - cz * 16;
 
-    addChunk(target.uuid.toString(), cx, cz, expiryTick);
-    spawnClaimParticles(ctx.source.server, cx, cz, pos.x(), pos.y(), pos.z());
-
-    var msg = 'Added chunk [' + cx + ', ' + cz + '] for ' + target.name.string;
-    if (ticks > 0) msg += ' for ' + ticks + ' ticks';
-    ctx.source.sendSuccess(msg, true);
-    return 1;
-}
-
-function claimAdjacentChunk(ctx, target, ticks) {
-    var pos = ctx.source.position;
-    var chunk = getChunk(pos);
-    var localX = pos.x() - chunk.x * 16, localZ = pos.z() - chunk.z * 16;
-
-    // Find nearest edge
     var dists = [
         { dx: -1, dz: 0, d: localX },
         { dx: 1, dz: 0, d: 16 - localX },
@@ -133,7 +86,84 @@ function claimAdjacentChunk(ctx, target, ticks) {
         if (dists[i].d < nearest.d) nearest = dists[i];
     }
 
-    return claimChunk(ctx, target, nearest.dx, nearest.dz, ticks);
+    return CT.claim(server, playerUuid, cx + nearest.dx, cz + nearest.dz, ticks, x, y, z);
+};
+
+ServerEvents.loaded(function (event) {
+    CT.load(event.server);
+});
+
+// Auto-save every 5 minutes and on chunk changes
+var lastSaveTick = 0;
+ServerEvents.tick(function (event) {
+    var tick = event.server.tickCount;
+
+    // Auto-save every 5 minutes (6000 ticks)
+    if (tick - lastSaveTick >= 6000) {
+        CT.save(event.server);
+        lastSaveTick = tick;
+    }
+
+    // Expire chunks every second
+    if (tick % 20 !== 0) return;
+
+    var expired = false;
+    for (var key in CT.chunks) {
+        var data = CT.chunks[key];
+        if (data.expiry && tick >= data.expiry) {
+            delete CT.chunks[key];
+            expired = true;
+            var parts = key.split(',');
+            var players = event.server.players;
+            for (var i = 0; i < players.size(); i++) {
+                var p = players.get(i);
+                if (p.uuid.toString() === data.uuid) {
+                    p.tell('Chunk [' + parts[0] + ', ' + parts[1] + '] expired');
+                    break;
+                }
+            }
+        }
+    }
+    if (expired) CT.save(event.server);
+});
+
+// Commands
+function getChunk(pos) {
+    return { x: Math.floor(pos.x() / 16), z: Math.floor(pos.z() / 16) };
+}
+
+function claimCmd(ctx, target, dx, dz, ticks) {
+    var pos = ctx.source.position;
+    var chunk = getChunk(pos);
+    var result = CT.claim(
+        ctx.source.server,
+        target.uuid.toString(),
+        chunk.x + dx, chunk.z + dz,
+        ticks,
+        pos.x(), pos.y(), pos.z()
+    );
+
+    var msg = (result.renewed ? 'Renewed' : 'Added') + ' chunk [' + result.cx + ', ' + result.cz + '] for ' + target.name.string;
+    if (ticks > 0) msg += ' for ' + ticks + ' ticks';
+    ctx.source.sendSuccess(msg, true);
+    CT.save(ctx.source.server);
+    return 1;
+}
+
+function claimAdjacentCmd(ctx, target, ticks) {
+    var pos = ctx.source.position;
+    var result = CT.claimAdjacent(
+        ctx.source.server,
+        target.uuid.toString(),
+        pos.x(), pos.y(), pos.z(),
+        ticks
+    );
+
+    var msg = (result.renewed ? 'Renewed' : 'Added') + ' chunk [' + result.cx + ', ' + result.cz + '] for ' + target.name.string;
+    if (ticks > 0) msg += ' for ' + ticks + ' ticks';
+    ctx.source.sendSuccess(msg, true);
+    CT.save(ctx.source.server);
+    return 1;
 }
 
 ServerEvents.commandRegistry(function (event) {
@@ -148,33 +178,34 @@ ServerEvents.commandRegistry(function (event) {
         C.literal('territory').requires(function (s) { return s.hasPermission(2); })
 
             .then(C.literal('add').then(playerArg().executes(function (ctx) {
-                return claimChunk(ctx, getTarget(ctx), 0, 0, 0);
+                return claimCmd(ctx, getTarget(ctx), 0, 0, 0);
             })))
 
             .then(C.literal('add_adjacent').then(playerArg()
-                .executes(function (ctx) { return claimAdjacentChunk(ctx, getTarget(ctx), 0); })
+                .executes(function (ctx) { return claimAdjacentCmd(ctx, getTarget(ctx), 0); })
                 .then(ticksArg().executes(function (ctx) {
-                    return claimAdjacentChunk(ctx, getTarget(ctx), getTicks(ctx));
+                    return claimAdjacentCmd(ctx, getTarget(ctx), getTicks(ctx));
                 }))
             ))
 
             .then(C.literal('add_north').then(playerArg().executes(function (ctx) {
-                return claimChunk(ctx, getTarget(ctx), 0, -1, 0);
+                return claimCmd(ctx, getTarget(ctx), 0, -1, 0);
             })))
             .then(C.literal('add_south').then(playerArg().executes(function (ctx) {
-                return claimChunk(ctx, getTarget(ctx), 0, 1, 0);
+                return claimCmd(ctx, getTarget(ctx), 0, 1, 0);
             })))
             .then(C.literal('add_east').then(playerArg().executes(function (ctx) {
-                return claimChunk(ctx, getTarget(ctx), 1, 0, 0);
+                return claimCmd(ctx, getTarget(ctx), 1, 0, 0);
             })))
             .then(C.literal('add_west').then(playerArg().executes(function (ctx) {
-                return claimChunk(ctx, getTarget(ctx), -1, 0, 0);
+                return claimCmd(ctx, getTarget(ctx), -1, 0, 0);
             })))
 
             .then(C.literal('remove').executes(function (ctx) {
                 var chunk = getChunk(ctx.source.position);
                 delete CT.chunks[chunk.x + ',' + chunk.z];
                 ctx.source.sendSuccess('Removed chunk [' + chunk.x + ', ' + chunk.z + ']', true);
+                CT.save(ctx.source.server);
                 return 1;
             }))
 
@@ -182,6 +213,7 @@ ServerEvents.commandRegistry(function (event) {
                 var count = Object.keys(CT.chunks).length;
                 CT.chunks = {};
                 ctx.source.sendSuccess('Cleared ' + count + ' chunks', true);
+                CT.save(ctx.source.server);
                 return 1;
             }))
 
@@ -207,5 +239,3 @@ ServerEvents.commandRegistry(function (event) {
             }))
     );
 });
-
-console.log('[territory] Commands loaded');

@@ -67,10 +67,10 @@ WaresEvents.batchDelivered(function (event) {
     var result = global.ChunkTerritory.claimAdjacent(
       server,
       targetPlayer.uuid.toString(),
-      targetPlayer.name.string,
       bx, by, bz,
       territoryTicks
     );
+    global.ChunkTerritory.save(server);
     var action = result.renewed ? 'Renewed' : 'Expanded to';
     targetPlayer.tell('[Territory] ' + action + ' [' + result.cx + ', ' + result.cz + '] for ' + territoryTicks + ' ticks');
   }
