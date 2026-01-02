@@ -78,7 +78,7 @@ ItemEvents.rightClicked('ptdye:trading_transceiver', function(event) {
         });
     } else {
         // Default agreement for new transceivers
-        var itemstring = 'item replace block ' + landX + ' ' + landY + ' ' + landZ + ' container.0 with wares:delivery_agreement{title:\'"Chunk Purchase"\',requestedItems:[{id:"minecraft:stick",Count:1b}],paymentItems:[],deliveryTime:60,commands:{onDelivery:"territory add_adjacent ' + playerName + ' 60",onCompletion:"territory add_adjacent ' + playerName + ' 60"}}';
+        var itemstring = 'item replace block ' + landX + ' ' + landY + ' ' + landZ + ' container.0 with wares:delivery_agreement{title:\'"Chunk Purchase"\',requestedItems:[{id:"minecraft:stick",Count:1b}],paymentItems:[],deliveryTime:90, territoryExpandTime:100}';
         server.scheduleInTicks(120, function() {
             server.runCommand(itemstring);
         });
