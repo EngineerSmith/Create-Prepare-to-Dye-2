@@ -313,16 +313,18 @@ ItemEvents.tooltip(function(event) {
   event.addAdvanced("wares:delivery_agreement", function(item, advanced, text) {
     var nbt = item.getNbt();
     if (!nbt) return;
+    if (!$Screen.hasShiftDown()) return;
     addTradeTooltip(text, nbt.get("requestedItems"), nbt.get("paymentItems"));
   });
-
+  
+  var $Screen = Java.loadClass("net.minecraft.client.gui.screens.Screen");
   // ---------------------------------------------------------------------------
   // Trading transceiver with stored agreement - show trade contents
   // ---------------------------------------------------------------------------
   event.addAdvanced("ptdye:trading_transceiver", function(item, advanced, text) {
     var nbt = item.getNbt();
     if (!nbt) return;
-
+    if (!$Screen.hasShiftDown()) return;
     var stored = nbt.get("StoredAgreement");
     if (!stored) return;
 
@@ -349,7 +351,6 @@ ItemEvents.tooltip(function(event) {
   // (We can't rely on Create's ItemDescription integration here because `global.create`
   // is not available in this environment, see logs.)
   // ---------------------------------------------------------------------------
-  var $Screen = Java.loadClass("net.minecraft.client.gui.screens.Screen");
   event.addAdvanced(Ingredient.of(/^botania:/), function(item, advanced, text) {
     if (!$Screen.hasShiftDown()) return;
 
