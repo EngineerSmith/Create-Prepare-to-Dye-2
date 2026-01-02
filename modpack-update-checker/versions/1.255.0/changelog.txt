@@ -1,0 +1,18 @@
+## [1.255.0](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/compare/1.254.0...1.255.0) (2026-01-02)
+
+
+### Features
+
+* use actionbar notifications for chunk stuff ([b9c9790](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/commit/b9c9790c027eaf9c04346387f56b0f8f747ac0ea))
+
+
+### Fixes
+
+* clean wares script from logs and prints ([0d0152d](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/commit/0d0152dabb6d2236ae2f6868e49a5ebbcda21588))
+
+
+### chores
+
+* autopublish 2026-01-02T19:13:39Z ([0ab94f5](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/commit/0ab94f531d5ae4185a3fa8e3c280b4ad48a5b8e7))
+
+
