@@ -1242,7 +1242,7 @@ hash = "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
 
 [[files]]
 file = "README.md"
-hash = "91086ef44f3f1ec47d073daf4dd1eba932536c3cf20e3209cff1a0b07287543e"
+hash = "222343f036c2e9678f6d6fa231a1dcdb88ef8dfaf326f16a9b458ca9c53cc0e4"
 
 [[files]]
 file = "SECURITY.md"
@@ -1250,7 +1250,7 @@ hash = "48981474996310a7861d97b5aaea8a11ba16d6075c273766daab566848930c09"
 
 [[files]]
 file = "VERSION"
-hash = "d944492210b21348c66f319306722146063c1b45b8bc9b5b1ac4b3f6495789b1"
+hash = "157b36a1043e1b0bd5e7c544a7d635c827f9925e54bc558308591d1e55490a55"
 
 [[files]]
 file = "config/MouseTweaks.cfg"
@@ -1694,7 +1694,7 @@ hash = "e6692fd7c3b5d4db82c9836c81b02182500bb00c81817919120f514df2bc7f00"
 
 [[files]]
 file = "config/modpack-update-checker/config.json"
-hash = "395fee5296a59e9dee21b6541fe88d5571a69b884ad01ce3120c30b9dcc6733d"
+hash = "b740ba21acfa3c91f92d2bc32fe15beb5073691f5a9043c2464f519e1958a785"
 
 [[files]]
 file = "config/modpack-update-checker/modpack-info.txt"
@@ -1730,7 +1730,7 @@ hash = "7508f3f5ceed80c7c606d01ee2dc93e2c72a8afa199ccb691fc5225c894d5bbd"
 
 [[files]]
 file = "config/quark-common.toml"
-hash = "64c362846757b64b0514dbe31a35e40252fc4265cc299b376977cdd6034784cc"
+hash = "81a532fb70a51561442e43d955bb9ec78a2d1e50bfeace225c466ab793835d24"
 
 [[files]]
 file = "config/quark_ponders-client.toml"
@@ -4830,7 +4830,7 @@ hash = "ded1b3b51c1b47ee3e812ef73dfb4dd423dec7119ed921585bed038c95328c0d"
 
 [[files]]
 file = "kubejs/assets/sdrp/lang/en_us.json"
-hash = "8082c997367613741ddb5602ffd3d204d40f1996c46938ed5be5a42fe547f689"
+hash = "20012b6a91233d33431a05cc0d7c0bf4bdf001d753cf2cdedabf7e3eb66e7fc1"
 
 [[files]]
 file = "kubejs/assets/storagedrawers/blockstates/controller.json"
@@ -5062,7 +5062,7 @@ hash = "b3ab0803e37b72c79a5cac24920c2a0afa6233a51b6e7016fffa66f0926f0281"
 
 [[files]]
 file = "kubejs/client_scripts/tooltips.js"
-hash = "3493a75751372b1a9df85a2ed0b7cffe1f3777e6fbc9c9d155737206afc7d84c"
+hash = "9d8ca0af96294f9d756b4053759bab6395a61f872446da1c60edac673aee8abd"
 
 [[files]]
 file = "kubejs/client_scripts/tooltips/botaniaDebookified.js"
@@ -5850,7 +5850,7 @@ hash = "ab323610254d7b8ce09ca2580b344714c58fd4804d26ee0e2525baa24a148809"
 
 [[files]]
 file = "modpack-update-checker/meta.json"
-hash = "fa29aa366a17e2fab77025fe623dfa6ccdc9eb61e775d97a4bf4b1c7c6a6dc95"
+hash = "a4c82fbd59a1a5d3f8fa001e2990148d2f248a97c068b4b54880e32e2e748184"
 
 [[files]]
 file = "modpack-update-checker/versions/1.100.0/changelog.txt"
@@ -8075,6 +8075,10 @@ hash = "2a0f50fb9db6db81945d22c2afe16b2f243b81033eece0c0fbf2e9cc16dc1ff7"
 [[files]]
 file = "modpack-update-checker/versions/1.252.1/changelog.txt"
 hash = "60230b3ff2b0ecf11517310937dce839884bb3956ca765235857aa7eba8785e4"
+
+[[files]]
+file = "modpack-update-checker/versions/1.253.1/changelog.txt"
+hash = "e760b264bcb449a82a21fa555bea742110b45b3885fcf7a3e0bd98ece66f8580"
 
 [[files]]
 file = "modpack-update-checker/versions/1.79.33/changelog.txt"

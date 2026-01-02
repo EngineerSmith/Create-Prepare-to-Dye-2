@@ -1,0 +1,8 @@
+### [1.253.1](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/compare/1.253.0...1.253.1) (2026-01-02)
+
+
+### Fixes
+
+* disable toretoise ([e1845c9](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/commit/e1845c95cca8d18417c1f65b4a8037b09dbd8c18))
+
+
