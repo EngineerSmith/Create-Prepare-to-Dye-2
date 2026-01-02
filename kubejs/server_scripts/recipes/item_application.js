@@ -27,31 +27,31 @@ ServerEvents.recipes((event) => {
   // BOTANIA - stripping livingwood log
   event.recipes.create.item_application("botania:stripped_livingwood_log", [
     "botania:livingwood_log",
-    "#forge:tools/axes",
+    "#minecraft:axes",
   ]);
 
   // BOTANIA - stripping glimmering livingwood log
   event.recipes.create.item_application("botania:glimmering_stripped_livingwood_log", [
     "botania:glimmering_livingwood_log",
-    "#forge:tools/axes",
+    "#minecraft:axes",
   ]);
 
   // BOTANIA - stripping dreamwood log
   event.recipes.create.item_application("botania:stripped_dreamwood_log", [
     "botania:dreamwood_log",
-    "#forge:tools/axes",
+    "#minecraft:axes",
   ]);
 
   // BOTANIA - stripping glimmering dreamwood log
   event.recipes.create.item_application("botania:glimmering_stripped_dreamwood_log", [
     "botania:glimmering_dreamwood_log",
-    "#forge:tools/axes",
+    "#minecraft:axes",
   ]);
 
   // QUARK - stripping blossom log
   event.recipes.create.item_application("quark:stripped_blossom_log", [
     "quark:blossom_log",
-    "#forge:tools/axes",
+    "#minecraft:axes",
   ]);
 
   // ORE - raw gold block from honeycomb block and terrasteel
