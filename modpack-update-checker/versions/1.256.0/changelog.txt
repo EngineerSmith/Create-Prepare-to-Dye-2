@@ -1,0 +1,22 @@
+## [1.256.0](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/compare/1.255.0...1.256.0) (2026-01-03)
+
+
+### Features
+
+* add salt items ([58d715b](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/commit/58d715b682762477af03a42541edd6df7f272707))
+* combine territory logic into one big file ([f0c5ebf](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/commit/f0c5ebfd633ac2a9b3a633e529de7ff383cc3f2b))
+* refactor more territory logic ([113856e](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/commit/113856ed16164a9b7cab299052adf2d7d87feacd))
+
+
+### Fixes
+
+* entity loop ([17888ae](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/commit/17888aec3d9d87f193900416138c86198b306282))
+* probjs update ([851325e](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/commit/851325ec630eb0fc57ae2eddff0be939ffa3c507))
+* remove duplicate picture tooltips ([9b132fe](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/commit/9b132fed5fb45dd76e08f63cbbbdd728b39297b5))
+
+
+### chores
+
+* autopublish 2026-01-02T19:26:42Z ([4bc95d1](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/commit/4bc95d127e928d272fed3552a47f2920349032ee))
+
+
