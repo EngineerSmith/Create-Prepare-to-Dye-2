@@ -370,43 +370,37 @@ global.DEVICE_GROUPS = {
     ],
   },
 
-  window: {
-    generic: "create:ornate_iron_window",
-    tag: "ptd:devices/window_devices",
-    // No assembly - made via mixing
-    devices: [
-      "create:oak_window",
-      "create:spruce_window",
-      "create:birch_window",
-      "create:jungle_window",
-      "create:acacia_window",
-      "create:dark_oak_window",
-      "create:mangrove_window",
-      "create:crimson_window",
-      "create:warped_window",
-    ],
-  },
+  // window: { // variant instead of device
+  //   generic: "create:ornate_iron_window",
+  //   tag: "ptd:devices/window_devices",
+  //   // No assembly - made via mixing
+  //   devices: [
+  //     "create:oak_window",
+  //     "create:spruce_window",
+  //     "create:birch_window",
+  //     "create:jungle_window",
+  //     "create:acacia_window",
+  //     "create:dark_oak_window",
+  //     "create:mangrove_window",
+  //     "create:crimson_window",
+  //     "create:warped_window",
+  //   ],
+  // },
 
   copycats: {
     generic: "copycats:copycat_ghost_block",
     tag: "ptd:devices/copycat_devices",
     // No assembly - made via stonecutting from andesite alloy
-    devices: [
+    devices: Ingredient.of("@copycats").itemIds.toArray().concat([
       "create:copycat_panel",
       "create:copycat_step",
-      "copycats:copycat_block",
-      "copycats:copycat_slab",
-      "copycats:copycat_beam",
-      "copycats:copycat_vertical_step",
-      "copycats:copycat_stairs",
-      "copycats:copycat_fence",
-      "copycats:copycat_fence_gate",
-      "copycats:copycat_wall",
-      "copycats:copycat_board",
-      "copycats:copycat_box",
-      "copycats:copycat_catwalk",
-      "copycats:copycat_ladder",
-    ],
+    ]).filter(function(item) {
+      return [
+        "copycats:copycat_shaft",
+        "copycats:copycat_cogwheel",
+        "copycats:copycat_large_cogwheel",
+      ].indexOf(item) === -1;
+    }),
   },
 
   smokestack: {
@@ -501,6 +495,14 @@ ServerEvents.recipes(function(event) {
     // Stonecutting: ingredient → each item
     for (let i = 0; i < items.length; i++) {
       event.stonecutting(items[i], ingredient);
+    }
+
+    // Stonecutting: generic → each device (for recipe visibility)
+    if (items.length > 1) {
+      let generic = items[0];
+      for (let i = 1; i < items.length; i++) {
+        event.stonecutting(items[i], generic);
+      }
     }
 
     // Shapeless: tag → generic (inventory conversion)

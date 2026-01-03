@@ -47,4 +47,39 @@ ServerEvents.recipes((event) => {
     "4x createdieselgenerators:wood_chip",
     "minecraft:clay",
   ]);
+
+  // ENDSTONE - from fermented blob (heated)
+  event.recipes.create
+    .compacting("minecraft:end_stone", ["9x ptdye:fermented_blob"])
+    .heated();
+
+  // ORGANIC MASS - from seeds (produces oil too)
+  event.remove({ id: "createdieselgenerators:compacting/plant_oil" });
+  event.recipes.create.compacting(
+    [Fluid.of("ptdye:organic_mass", 50), Fluid.of("createdieselgenerators:plant_oil", 10)],
+    "#forge:squeezables/seeds"
+  );
+
+  // PLANT OIL - from seeds (heated, pure oil)
+  event.recipes.create
+    .compacting(Fluid.of("createdieselgenerators:plant_oil", 50), "#forge:squeezables/seeds")
+    .heated();
+
+  // ORGANIC MASS - from poisonous potato
+  event.recipes.create.compacting(
+    Fluid.of("ptdye:organic_mass", 200),
+    "minecraft:poisonous_potato"
+  );
+
+  // ORGANIC MASS - from poor squeezables
+  event.recipes.create.compacting(
+    Fluid.of("ptdye:organic_mass", 250),
+    "#forge:squeezables/poor"
+  );
+
+  // ORGANIC MASS - from rich squeezables
+  event.recipes.create.compacting(
+    Fluid.of("ptdye:organic_mass", 500),
+    "#forge:squeezables/rich"
+  );
 });

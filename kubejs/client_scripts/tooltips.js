@@ -251,21 +251,21 @@ ItemEvents.tooltip(function(event) {
     }
 
     // Device type tooltip
-    if (itemObj.hasTag("ptd:devices/generic_devices") || itemObj.hasTag("forge:devices")) {
-      var tags = itemObj.getTags().toArray();
-      var deviceTag = null;
-      for (var i = 0; i < tags.length; i++) {
-        if (tags[i].location().toString().indexOf("devices/") !== -1) {
-          deviceTag = tags[i];
-          break;
-        }
-      }
-      if (deviceTag) {
-        var devicePath = deviceTag.location().path;
-        var deviceType = devicePath.split("/").pop().replace(/_/g, " ");
-        text.add(Text.aqua(Utils.toTitleCase(deviceType)).append(Text.aqua(" Device")));
-      }
-    }
+    // if (itemObj.hasTag("ptd:devices/generic_devices") || itemObj.hasTag("forge:devices")) {
+    //   var tags = itemObj.getTags().toArray();
+    //   var deviceTag = null;
+    //   for (var i = 0; i < tags.length; i++) {
+    //     if (tags[i].location().toString().indexOf("devices/") !== -1) {
+    //       deviceTag = tags[i];
+    //       break;
+    //     }
+    //   }
+    //   if (deviceTag) {
+    //     var devicePath = deviceTag.location().path;
+    //     var deviceType = devicePath.split("/").pop().replace(/_/g, " ");
+    //     text.add(Text.aqua(Utils.toTitleCase(deviceType)).append(Text.aqua(" Device")));
+    //   }
+    // }
   });
 
   // ---------------------------------------------------------------------------

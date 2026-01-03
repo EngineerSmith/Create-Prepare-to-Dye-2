@@ -137,6 +137,25 @@ ServerEvents.recipes((event) => {
     ],
   });
 
+  // Grass growth with bone meal
+  event.custom({
+    type: "lychee:block_interacting",
+    item_in: { item: "minecraft:bone_meal" },
+    block_in: "minecraft:grass_block",
+    post: [
+      { type: "place", block: "minecraft:short_grass", offset: [0, 1, 0] },
+    ],
+  });
+
+  event.custom({
+    type: "lychee:block_interacting",
+    item_in: { item: "minecraft:bone_meal" },
+    block_in: "minecraft:short_grass",
+    post: [
+      { type: "place", block: "minecraft:tall_grass" },
+    ],
+  });
+
   // DEAD PLANET - dripping from grass creates dead bush
   // event.custom({
   //   type: "lychee:dripstone_dripping",

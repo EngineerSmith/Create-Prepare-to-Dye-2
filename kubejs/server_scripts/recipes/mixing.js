@@ -221,4 +221,12 @@ ServerEvents.recipes((event) => {
     Fluid.of("createdieselgenerators:plant_oil", 250),
     Fluid.water(750),
   ]);
+
+  // EXPERIENCE - from organic mass and milk (heated)
+  event.recipes.create
+    .mixing(Fluid.of("create_enchantment_industry:experience", 10), [
+      Fluid.of("ptdye:organic_mass", 200),
+      Fluid.of("minecraft:milk", 50),
+    ])
+    .heated();
 });

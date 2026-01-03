@@ -113,4 +113,17 @@ ServerEvents.recipes(function(event) {
       { fluid: "createdieselgenerators:diesel", amount: 50 }
     ]
   });
+
+  // DISTILLATION - water and plant oil from organic mass
+  event.custom({
+    type: "createdieselgenerators:distillation",
+    ingredients: [
+      { fluid: "ptdye:organic_mass", amount: 10 }
+    ],
+    processingTime: 40,
+    results: [
+      { fluid: "minecraft:water", amount: 8 },
+      { fluid: "createdieselgenerators:plant_oil", amount: 2 }
+    ]
+  });
 });

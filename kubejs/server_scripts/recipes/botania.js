@@ -133,6 +133,48 @@ ServerEvents.recipes((event) => {
     catalyst: { type: "block", block: "minecraft:magma_block" },
   });
 
+  // // Deepslate from livingwood
+  // event.custom({
+  //   type: "botania:mana_infusion",
+  //   input: { item: "botania:livingwood" },
+  //   output: { item: "minecraft:deepslate" },
+  //   mana: 500,
+  // });
+
+  // Chorus fruit from bamboo
+  event.custom({
+    type: "botania:mana_infusion",
+    input: { item: "minecraft:bamboo" },
+    output: { item: "minecraft:chorus_fruit" },
+    mana: 500,
+  });
+
+  // Cactus from chorus fruit block
+  event.custom({
+    type: "botania:mana_infusion",
+    input: { item: "quark:chorus_fruit_block" },
+    output: { item: "minecraft:cactus" },
+    mana: 500,
+  });
+
+  // Bee duping flowers
+  var regularFlowers = [
+    "minecraft:dandelion", "minecraft:poppy", "minecraft:blue_orchid",
+    "minecraft:allium", "minecraft:azure_bluet", "minecraft:red_tulip",
+    "minecraft:orange_tulip", "minecraft:white_tulip", "minecraft:pink_tulip",
+    "minecraft:oxeye_daisy", "minecraft:cornflower", "minecraft:lily_of_the_valley",
+    "minecraft:sunflower", "minecraft:lilac", "minecraft:rose_bush", "minecraft:peony"
+  ];
+  for (var i = 0; i < regularFlowers.length; i++) {
+    event.custom({
+      type: "botania:mana_infusion",
+      input: { item: regularFlowers[i] },
+      output: { item: regularFlowers[i], count: 2 },
+      mana: 3000,
+      catalyst: { type: "state", block: "minecraft:bee_nest", state: { honey_level: "5" } },
+    });
+  }
+
   // Elven trade recipes
   event.custom({
     type: "botania:elven_trade",
