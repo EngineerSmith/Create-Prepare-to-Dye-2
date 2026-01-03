@@ -235,7 +235,7 @@ PlayerEvents.tick(function (event) {
 
   var cx = cp.x, cz = cp.z;
   var owns = CT.owns(uuid, cx, cz);
-  var state = playerState[uuid] || { outside: false };
+  var state = playerState[uuid] || { outside: player.spectator };
 
   // --- Enforcement ---
   if (CT.count === 0) {
@@ -437,9 +437,11 @@ EntityEvents.spawned('minecraft:item', function (event) {
     server.scheduleInTicks(tick, function () {
       var level = server.getLevel('minecraft:overworld');
       var e = null;
-      level.getEntities().forEach(function (ent) {
-        if (ent.uuid.toString() === itemUuid) e = ent;
-      });
+      var entities = level.getEntities();
+      for (var i = 0; i < entities.size(); i++) {
+        var ent = entities.get(i);
+        if (ent.uuid.toString() === itemUuid) { e = ent; break; }
+      }
       if (!e) return;
 
       var elocalX = e.x - Math.floor(e.x / 16) * 16;
