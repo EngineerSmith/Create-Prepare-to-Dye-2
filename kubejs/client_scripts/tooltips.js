@@ -1,6 +1,9 @@
 //priority: 0
 // Client Tooltips - item tooltip additions
 
+// Java class for shift key detection
+var $Screen = Java.loadClass("net.minecraft.client.gui.screens.Screen");
+
 // Converts _text_ syntax to gold colored text
 function formatTooltipText(text) {
   var parts = text.split("_");
@@ -15,14 +18,95 @@ function formatTooltipText(text) {
   return result;
 }
 
-// Static tooltip mappings (item ID -> lang key)
+// Returns true if shift not held (adds hint and caller should return early)
+function shiftHint(text, hint) {
+  if ($Screen.hasShiftDown()) return false;
+  text.add(Text.darkGray("Hold ").append(Text.gray("[Shift]")).append(Text.darkGray(" for " + (hint || "Summary"))));
+  return true;
+}
+
+// Returns true if ctrl not held (adds hint and caller should return early)
+function ctrlHint(text, hint) {
+  if ($Screen.hasControlDown()) return false;
+  text.add(Text.darkGray("Hold ").append(Text.gray("[Ctrl]")).append(Text.darkGray(" for " + (hint || "Details"))));
+  return true;
+}
+
+// Derives lang key from item ID: "modid:item_name" -> "ptd.tooltip.modid.item_name"
+function getLangKey(itemId) {
+  return "ptd.tooltip." + itemId.replace(":", ".");
+}
+
+// Simple tooltip items (lang key auto-derived from item ID)
+var TOOLTIP_ITEMS = [
+  // AE2
+  "ae2:toggle_bus",
+  "ae2:storage_bus",
+  "ae2:terminal",
+  "ae2:energy_cell",
+  // Critical
+  "minecraft:water_bucket",
+  "minecraft:white_concrete_powder",
+  "minecraft:lava_bucket",
+  "minecraft:cobblestone",
+  "minecraft:milk_bucket",
+  "minecraft:cauldron",
+  "minecraft:bone_meal",
+  "minecraft:egg",
+  "create:scoria",
+  "create:limestone",
+  "create:blaze_burner",
+  "createdieselgenerators:diesel_engine",
+  "createdieselgenerators:distillation_controller",
+  "wares:delivery_agreement",
+  "wares:completed_delivery_agreement",
+  "supplementaries:ash",
+  "crafting_on_a_stick:stonecutter",
+  // Dyeing
+  "minecraft:redstone",
+  "minecraft:redstone_ore",
+  "minecraft:iron_ore",
+  "minecraft:iron_ingot",
+  "minecraft:raw_iron",
+  "minecraft:copper_ore",
+  "minecraft:copper_ingot",
+  "minecraft:raw_copper",
+  "minecraft:deepslate_diamond_ore",
+  "minecraft:deepslate_emerald_ore",
+  "minecraft:deepslate_lapis_ore",
+  "minecraft:deepslate_coal_ore",
+  "minecraft:deepslate_iron_ore",
+  "minecraft:deepslate_copper_ore",
+  "minecraft:deepslate_gold_ore",
+  "minecraft:deepslate_redstone_ore",
+  // PTDye
+  "ptdye:trading_transceiver",
+  "ptdye:postage_stamp_transceiver",
+  "ptdye:mechanical_device",
+  "ptdye:sturdy_device",
+  "ptdye:smart_device",
+  "ptdye:sealed_device",
+  "ptdye:logic_device",
+  "ptdye:locomotive_device",
+  "ptdye:red_stringed_device",
+  "ptdye:furnished_device",
+  "ptdye:hammer",
+  // Forgery
+  "minecraft:cobweb",
+  "minecraft:farmland",
+  "minecraft:note_block",
+  "minecraft:moss_block",
+  "minecraft:grindstone",
+  "minecraft:powered_rail",
+  "minecraft:detector_rail",
+  "minecraft:furnace_minecart",
+  "minecraft:blaze_powder"
+];
+
+// Custom mappings for shared/non-standard lang keys (item ID -> lang key)
 var TOOLTIP_MAPPINGS = {
-  // AE2 tooltips
-  "ae2:toggle_bus": "ptd.tooltip.ae2.toggle_bus",
+  // AE2 shared tooltips
   "ae2:inverted_toggle_bus": "ptd.tooltip.ae2.toggle_bus",
-  "ae2:storage_bus": "ptd.tooltip.ae2.storage_bus",
-  "ae2:terminal": "ptd.tooltip.ae2.terminal",
-  "ae2:energy_cell": "ptd.tooltip.ae2.energy_cell",
   "ae2:flawed_budding_quartz": "ptd.tooltip.ae2.budding_quartz",
   "ae2:chipped_budding_quartz": "ptd.tooltip.ae2.budding_quartz",
   "ae2:damaged_budding_quartz": "ptd.tooltip.ae2.budding_quartz",
@@ -30,73 +114,25 @@ var TOOLTIP_MAPPINGS = {
   "ae2:medium_quartz_bud": "ptd.tooltip.ae2.budding_quartz",
   "ae2:large_quartz_bud": "ptd.tooltip.ae2.budding_quartz",
   "minecraft:quartz": "ptd.tooltip.ae2.budding_quartz",
-
-  // Critical tooltips
-  "minecraft:water_bucket": "ptd.tooltip.minecraft.water_bucket",
-  "minecraft:white_concrete_powder": "ptd.tooltip.minecraft.white_concrete_powder",
-  "minecraft:lava_bucket": "ptd.tooltip.minecraft.lava_bucket",
-  "create:scoria": "ptd.tooltip.create.scoria",
-  "minecraft:cobblestone": "ptd.tooltip.minecraft.cobblestone",
-  "create:limestone": "ptd.tooltip.create.limestone",
-  "minecraft:milk_bucket": "ptd.tooltip.minecraft.milk_bucket",
-  "minecraft:cauldron": "ptd.tooltip.minecraft.cauldron",
-  "createdieselgenerators:diesel_engine": "ptd.tooltip.createdieselgenerators.diesel_engine",
-  "wares:delivery_agreement": "ptd.tooltip.wares.delivery_agreement",
-  "wares:completed_delivery_agreement": "ptd.tooltip.wares.completed_delivery_agreement",
-  "create:blaze_burner": "ptd.tooltip.create.blaze_burner",
-  "supplementaries:ash": "ptd.tooltip.supplementaries.ash",
-  "crafting_on_a_stick:stonecutter": "ptd.tooltip.crafting_on_a_stick.stonecutter",
-  "minecraft:bone_meal": "ptd.tooltip.minecraft.bone_meal",
-  "createdieselgenerators:distillation_controller": "ptd.tooltip.createdieselgenerators.distillation_controller",
-  "minecraft:egg": "ptd.tooltip.minecraft.egg",
-
-  // Dyeing tooltips
-  "minecraft:redstone": "ptd.tooltip.dyeing.redstone",
-  "minecraft:redstone_ore": "ptd.tooltip.dyeing.redstone",
-  "minecraft:iron_ore": "ptd.tooltip.dyeing.iron_ore",
-  "minecraft:iron_ingot": "ptd.tooltip.dyeing.iron_ingot",
-  "minecraft:raw_iron": "ptd.tooltip.dyeing.iron_ingot",
-  "minecraft:copper_ore": "ptd.tooltip.dyeing.copper_ore",
-  "minecraft:copper_ingot": "ptd.tooltip.dyeing.copper_ingot",
-  "minecraft:raw_copper": "ptd.tooltip.dyeing.copper_ingot",
-  "minecraft:deepslate_diamond_ore": "ptd.tooltip.dyeing.deepslate_diamond_ore",
-  "minecraft:deepslate_emerald_ore": "ptd.tooltip.dyeing.deepslate_emerald_ore",
-  "minecraft:deepslate_lapis_ore": "ptd.tooltip.dyeing.deepslate_lapis_ore",
-  "minecraft:deepslate_coal_ore": "ptd.tooltip.dyeing.deepslate_coal_ore",
-  "minecraft:deepslate_iron_ore": "ptd.tooltip.dyeing.deepslate_iron_ore",
-  "minecraft:deepslate_copper_ore": "ptd.tooltip.dyeing.deepslate_copper_ore",
-  "minecraft:deepslate_gold_ore": "ptd.tooltip.dyeing.deepslate_gold_ore",
-  "minecraft:deepslate_redstone_ore": "ptd.tooltip.dyeing.deepslate_redstone_ore",
-
-  // PTDye custom items
-  "ptdye:trading_transceiver": "ptd.tooltip.ptdye.trading_transceiver",
-  "ptdye:postage_stamp_transceiver": "ptd.tooltip.ptdye.postage_stamp_transceiver",
-  "ptdye:mechanical_device": "ptd.tooltip.ptdye.mechanical_device",
-  "ptdye:sturdy_device": "ptd.tooltip.ptdye.sturdy_device",
-  "ptdye:smart_device": "ptd.tooltip.ptdye.smart_device",
-  "ptdye:sealed_device": "ptd.tooltip.ptdye.sealed_device",
-  "ptdye:logic_device": "ptd.tooltip.ptdye.logic_device",
-  "ptdye:locomotive_device": "ptd.tooltip.ptdye.locomotive_device",
-  "ptdye:red_stringed_device": "ptd.tooltip.ptdye.red_stringed_device",
-  "ptdye:furnished_device": "ptd.tooltip.ptdye.furnished_device",
-  "ptdye:hammer": "ptd.tooltip.ptdye.hammer",
-
-  // Forgery tweaks tooltips
-  "minecraft:campfire": "ptd.tooltip.forgery.campfire",
-  "minecraft:soul_campfire": "ptd.tooltip.forgery.campfire",
-  "minecraft:cobweb": "ptd.tooltip.forgery.cobweb",
-  "minecraft:farmland": "ptd.tooltip.forgery.farmland",
-  "minecraft:note_block": "ptd.tooltip.forgery.note_block",
-  "minecraft:moss_block": "ptd.tooltip.forgery.moss",
-  "minecraft:anvil": "ptd.tooltip.forgery.anvil",
-  "minecraft:chipped_anvil": "ptd.tooltip.forgery.anvil",
-  "minecraft:damaged_anvil": "ptd.tooltip.forgery.anvil",
-  "minecraft:grindstone": "ptd.tooltip.forgery.grindstone",
-  "minecraft:powered_rail": "ptd.tooltip.forgery.powered_rail",
-  "minecraft:detector_rail": "ptd.tooltip.forgery.detector_rail",
-  "minecraft:furnace_minecart": "ptd.tooltip.forgery.furnace_minecart",
-  "minecraft:blaze_powder": "ptd.tooltip.forgery.blaze_powder"
+  // Forgery shared tooltips
+  "minecraft:campfire": "ptd.tooltip.minecraft.campfire",
+  "minecraft:soul_campfire": "ptd.tooltip.minecraft.campfire",
+  "minecraft:anvil": "ptd.tooltip.minecraft.anvil",
+  "minecraft:chipped_anvil": "ptd.tooltip.minecraft.anvil",
+  "minecraft:damaged_anvil": "ptd.tooltip.minecraft.anvil"
 };
+
+// Build final mappings: start with auto-derived, then add custom overrides
+var FINAL_TOOLTIP_MAPPINGS = {};
+for (var i = 0; i < TOOLTIP_ITEMS.length; i++) {
+  var itemId = TOOLTIP_ITEMS[i];
+  FINAL_TOOLTIP_MAPPINGS[itemId] = getLangKey(itemId);
+}
+var customKeys = Object.keys(TOOLTIP_MAPPINGS);
+for (var i = 0; i < customKeys.length; i++) {
+  var itemId = customKeys[i];
+  FINAL_TOOLTIP_MAPPINGS[itemId] = TOOLTIP_MAPPINGS[itemId];
+}
 
 // AE2 smart cables - all colors
 var AE2_SMART_CABLES = [
@@ -119,7 +155,7 @@ var AE2_SMART_CABLES = [
   "ae2:black_smart_cable"
 ];
 for (var i = 0; i < AE2_SMART_CABLES.length; i++) {
-  TOOLTIP_MAPPINGS[AE2_SMART_CABLES[i]] = "ptd.tooltip.ae2.smart_cable";
+  FINAL_TOOLTIP_MAPPINGS[AE2_SMART_CABLES[i]] = "ptd.tooltip.ae2.smart_cable";
 }
 
 // Golden tools - Fortune
@@ -179,32 +215,40 @@ var WOOD_LOGS = [
   "quark:stripped_blossom_wood"
 ];
 for (var i = 0; i < WOOD_LOGS.length; i++) {
-  TOOLTIP_MAPPINGS[WOOD_LOGS[i]] = "ptd.tooltip.wood_logs";
+  FINAL_TOOLTIP_MAPPINGS[WOOD_LOGS[i]] = "ptd.tooltip.wood_logs";
 }
 
 ItemEvents.tooltip(function(event) {
-  // Static tooltips from lang file
-  var mappingKeys = Object.keys(TOOLTIP_MAPPINGS);
+  // Static tooltips from lang file (shift to show)
+  var mappingKeys = Object.keys(FINAL_TOOLTIP_MAPPINGS);
   for (var i = 0; i < mappingKeys.length; i++) {
     var itemId = mappingKeys[i];
-    var langKey = TOOLTIP_MAPPINGS[itemId];
-    var translated = Text.translate(langKey).getString();
-    if (translated !== langKey) {
-      event.add(itemId, formatTooltipText(translated));
-    }
+    event.addAdvanced(itemId, function(item, advanced, text) {
+      var key = FINAL_TOOLTIP_MAPPINGS[item.getId()];
+      var translated = Text.translate(key).getString();
+      if (translated === key) return;
+      if (shiftHint(text)) return;
+      text.add(formatTooltipText(translated));
+    });
   }
 
-  // Golden tools - Fortune tooltip
+  // Golden tools - Fortune tooltip (shift to show)
   for (var i = 0; i < GOLDEN_TOOLS.length; i++) {
-    var translated = Text.translate("ptd.tooltip.golden_tools").getString();
-    event.add(GOLDEN_TOOLS[i], formatTooltipText(translated));
+    event.addAdvanced(GOLDEN_TOOLS[i], function(item, advanced, text) {
+      if (shiftHint(text)) return;
+      var translated = Text.translate("ptd.tooltip.golden_tools").getString();
+      text.add(formatTooltipText(translated));
+    });
   }
 
-  // Diamond tools - Silk Touch tooltips
+  // Diamond tools - Silk Touch tooltips (shift to show)
   for (var i = 0; i < DIAMOND_TOOLS.length; i++) {
-    event.add(DIAMOND_TOOLS[i], Text.of(Text.translate("ptd.tooltip.diamond_silk_touch").getString()).italic().gray());
-    var translated = Text.translate("ptd.tooltip.diamond_tools").getString();
-    event.add(DIAMOND_TOOLS[i], formatTooltipText(translated));
+    event.addAdvanced(DIAMOND_TOOLS[i], function(item, advanced, text) {
+      if (shiftHint(text)) return;
+      text.add(Text.of(Text.translate("ptd.tooltip.diamond_silk_touch").getString()).italic().gray());
+      var translated = Text.translate("ptd.tooltip.diamond_tools").getString();
+      text.add(formatTooltipText(translated));
+    });
   }
 
   // Disabled items tooltip
@@ -268,9 +312,7 @@ ItemEvents.tooltip(function(event) {
     // }
   });
 
-  // ---------------------------------------------------------------------------
   // Wares trade contents tooltip helper
-  // ---------------------------------------------------------------------------
   function getItemName(id) {
     return Item.of(id).getHoverName().getString();
   }
@@ -307,50 +349,45 @@ ItemEvents.tooltip(function(event) {
     }
   }
 
-  // ---------------------------------------------------------------------------
-  // Wares delivery agreement - show trade contents and repeat count
-  // ---------------------------------------------------------------------------
+  // Wares delivery agreement - show trade details on ctrl
   event.addAdvanced("wares:delivery_agreement", function(item, advanced, text) {
     var nbt = item.getNbt();
     if (!nbt) return;
+    if (ctrlHint(text, "Trade Details")) return;
 
-    // Show ordered/repeat count
+    // Repeat count
     var ordered = nbt.getInt("ordered");
     if (ordered === 0) {
-      text.add(Text.darkGreen("Fixed rates contract."));
-      text.add(Text.darkGreen("Can be repeated ").append(Text.green("infinitely")));
+      text.add(Text.darkGray("Can be repeated ").append(Text.gray("infinitely")));
     } else if (ordered > 0) {
-      text.add(Text.darkGreen("Contract can be repeated ").append(Text.green(ordered + " times")));
+      text.add(Text.darkGray("Can be repeated ").append(Text.gray(ordered + " times")));
     }
 
-    // Show trade contents on shift
-    if (!$Screen.hasShiftDown()) return;
+    // Trade contents
     addTradeTooltip(text, nbt.get("requestedItems"), nbt.get("paymentItems"));
   });
 
-  // ---------------------------------------------------------------------------
-  // Wares completed delivery agreement - show repeat count
-  // ---------------------------------------------------------------------------
+  // Wares completed delivery agreement - show details on ctrl
   event.addAdvanced("wares:completed_delivery_agreement", function(item, advanced, text) {
     var nbt = item.getNbt();
     if (!nbt) return;
+    if (ctrlHint(text, "Trade Details")) return;
 
     var ordered = nbt.getInt("ordered");
     if (ordered > 0) {
-      text.add(Text.darkGreen("Contract was repeated ").append(Text.green(ordered + " times")));
+      text.add(Text.darkGray("Was repeated ").append(Text.gray(ordered + " times")));
     }
+
+    addTradeTooltip(text, nbt.get("requestedItems"), nbt.get("paymentItems"));
   });
-  
-  var $Screen = Java.loadClass("net.minecraft.client.gui.screens.Screen");
-  // ---------------------------------------------------------------------------
+
   // Trading transceiver with stored agreement - show trade contents
-  // ---------------------------------------------------------------------------
   event.addAdvanced("ptdye:trading_transceiver", function(item, advanced, text) {
     var nbt = item.getNbt();
     if (!nbt) return;
-    if (!$Screen.hasShiftDown()) return;
     var stored = nbt.get("StoredAgreement");
     if (!stored) return;
+    if (ctrlHint(text, "Trade Details")) return;
 
     // The stored agreement has structure: {Count, id, tag:{requestedItems, paymentItems}}
     var tag = stored.get("tag");
@@ -376,13 +413,11 @@ ItemEvents.tooltip(function(event) {
   // is not available in this environment, see logs.)
   // ---------------------------------------------------------------------------
   event.addAdvanced(Ingredient.of(/^botania:/), function(item, advanced, text) {
-    if (!$Screen.hasShiftDown()) return;
-
     var itemObj = Item.of(item);
     var key = itemObj.getDescriptionId() + ".tooltip.summary";
     var translated = Text.translate(key).getString();
     if (translated === key) return;
-
+    if (shiftHint(text)) return;
     text.add(formatTooltipText(translated));
   });
 });
