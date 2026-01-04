@@ -1,0 +1,13 @@
+## [1.259.0](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/compare/1.258.0...1.259.0) (2026-01-04)
+
+
+### Features
+
+* port emi auto pages for tooltips but fix underscores showing even though not supported ([edd63d5](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/commit/edd63d532f4755f095b526b2ea7be79a5eec47d3))
+
+
+### chores
+
+* autopublish 2026-01-04T13:58:28Z ([3a09c24](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/commit/3a09c24e776651d1eb010c2edb5b47043d7568a4))
+
+
