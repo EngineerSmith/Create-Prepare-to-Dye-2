@@ -53,10 +53,9 @@ Converting old scripts from `kubejs.old/` to the new standard approach.
 
 ### Mod Integrations (`kubejs.old/server_scripts/base/mods/`)
 - [x] appliedEnergistics.js -> ae2.js (item hiding), tags.js (quartz/lightblue), crushing.js, splashing.js, item_application.js, crafting.js, smelting.js, filling.js, mixing.js, sequenced_assembly.js, botania.js, variants.js
-- [ ] craftingOnAStick.js
 - [x] create.js -> tags.js (blaze_burner_capturable entity tag), TODO: recipes
 - [x] createEnchantmentIndustry.js -> recipe_removals.js, tags.js (experience rotor removed/hidden)
-- [x] minecraft.js -> tags.js (squeezables tags), TODO: recipes
+- [x] minecraft.js -> tags.js (squeezables tags)
 - [x] quark.js -> quark.js (item hiding only), recipes split to smelting.js, crafting.js, variants.js (searchable via "QUARK -")
 - [x] railways.js -> tags.js (zinc_nuggets fix), TODO: recipe removals
 - [x] salt.js -- skipped, mod not planned

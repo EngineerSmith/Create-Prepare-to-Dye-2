@@ -2,7 +2,7 @@
 //Create Prepare to Dye 2 - Player Login Events
 
 function getExtraPlayerItems() {
-  let amount = global.config_additionalPlayerDevices.get();
+  var amount = global.config_additionalPlayerDevices.get();
   return [
     Item.of("ptdye:mechanical_device", amount),
     Item.of("ptdye:smart_device", amount),
@@ -54,9 +54,10 @@ PlayerEvents.loggedIn((event) => {
     event.player.persistentData.putBoolean("starter", true);
 
     if (event.server.persistentData.getBoolean("existing_world")) {
-      getExtraPlayerItems().forEach((item) => {
-        event.player.give(item);
-      });
+      var extraItems = getExtraPlayerItems();
+      for (var i = 0; i < extraItems.length; i++) {
+        event.player.give(extraItems[i]);
+      }
     }
     event.server.persistentData.putBoolean("existing_world", true);
   }

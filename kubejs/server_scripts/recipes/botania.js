@@ -27,18 +27,28 @@ ServerEvents.recipes((event) => {
     catalyst: { type: "state", block: "minecraft:bee_nest", state: { honey_level: "5" } },
   });
 
+  // Kelp from 4x sugar cane
   event.custom({
     type: "botania:mana_infusion",
-    input: { item: "minecraft:sugar_cane" },
+    input: { item: "minecraft:sugar_cane", count: 4 },
     output: { item: "minecraft:kelp" },
     mana: 500,
   });
 
+  // Sugar cane from kelp
   event.custom({
     type: "botania:mana_infusion",
     input: { item: "minecraft:kelp" },
     output: { item: "minecraft:sugar_cane" },
     mana: 300,
+  });
+
+  // Bamboo from sugar cane
+  event.custom({
+    type: "botania:mana_infusion",
+    input: { item: "minecraft:sugar_cane" },
+    output: { item: "minecraft:bamboo" },
+    mana: 500,
   });
 
   event.custom({

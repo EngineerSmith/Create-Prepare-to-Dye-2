@@ -4,20 +4,23 @@
 ServerEvents.recipes((event) => {
   // Ore generation from dyes
   // Basic ores (stone variants)
-  let basicOres = {
+  var basicOres = {
     iron_ore: "minecraft:white_dye",
     redstone_ore: "minecraft:red_dye",
     copper_ore: "minecraft:orange_dye",
     coal_ore: "minecraft:black_dye",
   };
 
-  Object.entries(basicOres).forEach(([ore, dye]) => {
+  var basicOreKeys = Object.keys(basicOres);
+  for (var i = 0; i < basicOreKeys.length; i++) {
+    var ore = basicOreKeys[i];
+    var dye = basicOres[ore];
     event.custom({
       type: "lychee:block_interacting",
       item_in: { item: dye },
       block_in: "minecraft:stone",
       post: [
-        { type: "place", block: `minecraft:${ore}` },
+        { type: "place", block: "minecraft:" + ore },
       ],
     });
     event.custom({
@@ -25,29 +28,32 @@ ServerEvents.recipes((event) => {
       item_in: { item: dye },
       block_in: "minecraft:deepslate",
       post: [
-        { type: "place", block: `minecraft:deepslate_${ore}` },
+        { type: "place", block: "minecraft:deepslate_" + ore },
       ],
     });
-  });
+  }
 
   // Deepslate-only ores
-  let deepslateOnlyOres = {
+  var deepslateOnlyOres = {
     deepslate_emerald_ore: "minecraft:lime_dye",
     deepslate_lapis_ore: "minecraft:blue_dye",
     deepslate_diamond_ore: "minecraft:light_blue_dye",
     deepslate_gold_ore: "minecraft:yellow_dye",
   };
 
-  Object.entries(deepslateOnlyOres).forEach(([ore, dye]) => {
+  var deepslateOreKeys = Object.keys(deepslateOnlyOres);
+  for (var j = 0; j < deepslateOreKeys.length; j++) {
+    var dsOre = deepslateOreKeys[j];
+    var dsDye = deepslateOnlyOres[dsOre];
     event.custom({
       type: "lychee:block_interacting",
-      item_in: { item: dye },
+      item_in: { item: dsDye },
       block_in: "minecraft:deepslate",
       post: [
-        { type: "place", block: `minecraft:${ore}` },
+        { type: "place", block: "minecraft:" + dsOre },
       ],
     });
-  });
+  }
 
   // Nether ores
   event.custom({

@@ -2,8 +2,54 @@
 //Create Prepare to Dye 2 - Sequenced Assembly Recipes
 
 ServerEvents.recipes((event) => {
+  // PAPER - from wood chips with milk
+  event.remove({ id: "minecraft:paper" });
+  event.remove({ id: "quark:tweaks/utility/bent/paper" });
+  event.recipes.create
+    .sequenced_assembly("2x minecraft:paper", "createdieselgenerators:wood_chip", [
+      event.recipes.create.filling("createdieselgenerators:wood_chip", [
+        Fluid.of("minecraft:milk", 25),
+        "createdieselgenerators:wood_chip",
+      ]),
+      event.recipes.create.pressing(
+        "createdieselgenerators:wood_chip",
+        "createdieselgenerators:wood_chip"
+      ),
+    ])
+    .transitionalItem("createdieselgenerators:wood_chip")
+    .loops(1);
+
+  // PAPER - from wood chips with water (more output)
+  event.recipes.create
+    .sequenced_assembly("3x minecraft:paper", "createdieselgenerators:wood_chip", [
+      event.recipes.create.pressing(
+        "createdieselgenerators:wood_chip",
+        "createdieselgenerators:wood_chip"
+      ),
+      event.recipes.create.filling("createdieselgenerators:wood_chip", [
+        Fluid.water(25),
+        "createdieselgenerators:wood_chip",
+      ]),
+      event.recipes.create.pressing(
+        "createdieselgenerators:wood_chip",
+        "createdieselgenerators:wood_chip"
+      ),
+      event.recipes.create.filling("createdieselgenerators:wood_chip", [
+        Fluid.water(75),
+        "createdieselgenerators:wood_chip",
+      ]),
+      event.recipes.create.pressing(
+        "createdieselgenerators:wood_chip",
+        "createdieselgenerators:wood_chip"
+      ),
+    ])
+    .transitionalItem("createdieselgenerators:wood_chip")
+    .loops(1);
+
   // FOOD - pancake assembly (multiple fluid variants)
-  ["create:chocolate", "create:honey", "minecraft:milk"].forEach((fluid) => {
+  var pancakeFluids = ["create:chocolate", "create:honey", "minecraft:milk"];
+  for (var i = 0; i < pancakeFluids.length; i++) {
+    var fluid = pancakeFluids[i];
     event.recipes.create
       .sequenced_assembly("4x supplementaries:pancake", "create:dough", [
         event.recipes.create.filling("create:dough", [
@@ -22,7 +68,7 @@ ServerEvents.recipes((event) => {
       ])
       .transitionalItem("create:dough")
       .loops(1);
-  });
+  }
 
   // FOOD - pizza assembly
   event.recipes.create

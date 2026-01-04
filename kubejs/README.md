@@ -83,17 +83,64 @@ don't use box comments or other special formatting or symbols
 // NOTE: important context for future readers
 ```
 
+## Rhino JavaScript Limitations
+
+KubeJS uses the Rhino JavaScript engine which has limited ES6 support. Avoid:
+
+**Arrow functions with `.forEach()`:**
+```javascript
+// BAD - will fail
+["a", "b", "c"].forEach((item) => { ... });
+Object.entries(obj).forEach(([key, val]) => { ... });
+
+// GOOD - use standard for loops
+var items = ["a", "b", "c"];
+for (var i = 0; i < items.length; i++) {
+  var item = items[i];
+  ...
+}
+
+var keys = Object.keys(obj);
+for (var i = 0; i < keys.length; i++) {
+  var key = keys[i];
+  var val = obj[key];
+  ...
+}
+```
+
+**Template literals with complex expressions:**
+```javascript
+// RISKY - may fail in some contexts
+`minecraft:${ore}`
+
+// SAFE - use string concatenation
+"minecraft:" + ore
+```
+
+**`let` and `const`:**
+```javascript
+// RISKY - use var instead for maximum compatibility
+let x = 1;
+const Y = 2;
+
+// SAFE
+var x = 1;
+var Y = 2;
+```
+
+**Note:** Arrow functions work in event handler registration (e.g., `ServerEvents.recipes((event) => {...})`) but fail when called on array methods.
+
 ## Code Style
 
 ### Variable Naming
 ```javascript
 // Constants - UPPER_SNAKE_CASE
-const DEVICE_GROUPS = { ... };
-const EXTRA_PLAYER_ITEMS = [ ... ];
+var DEVICE_GROUPS = { ... };
+var EXTRA_PLAYER_ITEMS = [ ... ];
 
 // Local variables - camelCase
-let outputAmount = 8;
-let fadingMult = global.config_fadingMultiplier.get();
+var outputAmount = 8;
+var fadingMult = global.config_fadingMultiplier.get();
 
 // Config globals - config_ prefix
 global.config_swimSpeed = event.doubleValue(...);

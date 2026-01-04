@@ -308,13 +308,37 @@ ItemEvents.tooltip(function(event) {
   }
 
   // ---------------------------------------------------------------------------
-  // Wares delivery agreement - show trade contents
+  // Wares delivery agreement - show trade contents and repeat count
   // ---------------------------------------------------------------------------
   event.addAdvanced("wares:delivery_agreement", function(item, advanced, text) {
     var nbt = item.getNbt();
     if (!nbt) return;
+
+    // Show ordered/repeat count
+    var ordered = nbt.getInt("ordered");
+    if (ordered === 0) {
+      text.add(Text.darkGreen("Fixed rates contract."));
+      text.add(Text.darkGreen("Can be repeated ").append(Text.green("infinitely")));
+    } else if (ordered > 0) {
+      text.add(Text.darkGreen("Contract can be repeated ").append(Text.green(ordered + " times")));
+    }
+
+    // Show trade contents on shift
     if (!$Screen.hasShiftDown()) return;
     addTradeTooltip(text, nbt.get("requestedItems"), nbt.get("paymentItems"));
+  });
+
+  // ---------------------------------------------------------------------------
+  // Wares completed delivery agreement - show repeat count
+  // ---------------------------------------------------------------------------
+  event.addAdvanced("wares:completed_delivery_agreement", function(item, advanced, text) {
+    var nbt = item.getNbt();
+    if (!nbt) return;
+
+    var ordered = nbt.getInt("ordered");
+    if (ordered > 0) {
+      text.add(Text.darkGreen("Contract was repeated ").append(Text.green(ordered + " times")));
+    }
   });
   
   var $Screen = Java.loadClass("net.minecraft.client.gui.screens.Screen");

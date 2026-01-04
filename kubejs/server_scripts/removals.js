@@ -105,6 +105,12 @@ var REMOVED_ITEMS = [
   "minecraft:smoker",
   "minecraft:furnace",
 
+  // Enchanting table (enchanting via different method)
+  "minecraft:enchanting_table",
+
+  // End portal frame
+  "minecraft:end_portal_frame",
+
   // Non-oak boats (replaced by generic boat recipe)
   "minecraft:acacia_boat", "minecraft:birch_boat", "minecraft:dark_oak_boat",
   "minecraft:jungle_boat", "minecraft:spruce_boat", "minecraft:mangrove_boat",
@@ -189,6 +195,10 @@ ServerEvents.recipes(function(event) {
 
   // Wares delivery table (obtained differently)
   event.remove({ id: "wares:delivery_table" });
+
+  // Vanilla boat recipes (replaced by generic recipe in crafting.js)
+  event.remove({ id: "minecraft:oak_boat" });
+  event.remove({ id: "quark:tweaks/crafting/utility/chest_boat/direct_oak_chest_boat" });
 
   // Remove all recipes for removed items
   for (var i = 0; i < REMOVED_ITEMS.length; i++) {

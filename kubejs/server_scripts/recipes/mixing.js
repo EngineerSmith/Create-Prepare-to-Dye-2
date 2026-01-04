@@ -143,9 +143,16 @@ ServerEvents.recipes((event) => {
   ]);
 
   // BOTANIA - ghast tear from runes
-  event.recipes.create.mixing("4x minecraft:ghast_tear", [
+  event.recipes.create.mixing("8x minecraft:ghast_tear", [
     "botania:rune_sloth",
     "botania:rune_air",
+  ]);
+
+  // NETHER - ghast tear from gold nuggets with lava and milk
+  event.recipes.create.mixing("minecraft:ghast_tear", [
+    "#forge:nuggets/gold",
+    Fluid.of("minecraft:lava", 500),
+    Fluid.of("minecraft:milk", 500),
   ]);
 
   // CRAFT - sponge from leaves and plastic (heated)
