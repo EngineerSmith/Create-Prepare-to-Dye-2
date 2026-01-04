@@ -421,3 +421,34 @@ ItemEvents.tooltip(function(event) {
     text.add(formatTooltipText(translated));
   });
 });
+
+// Generate EMI info pages for all tooltips
+ClientEvents.lang("en_us", function(event) {
+  // Read lang file directly since Text.translate() doesn't work during lang event
+  var langFile = JsonIO.read("kubejs/assets/ptd/lang/en_us.json");
+  if (!langFile) return;
+
+  var mappingKeys = Object.keys(FINAL_TOOLTIP_MAPPINGS);
+  for (var i = 0; i < mappingKeys.length; i++) {
+    var itemId = mappingKeys[i];
+    var langKey = FINAL_TOOLTIP_MAPPINGS[itemId];
+    var translated = langFile[langKey];
+    if (!translated) continue;
+
+    // Strip underscores for EMI (doesn't support formatting)
+    var strippedText = String(translated).split("_").join("");
+
+    // Add EMI info lang entry
+    var item = Item.of(itemId);
+    var emiLangKey = item.getDescriptionId() + ".emi.info";
+    event.add(emiLangKey, strippedText);
+
+    // Generate EMI info JSON referencing the lang key
+    var jsonPath = "kubejs/assets/emi/recipe/additions/generated." + itemId.replace(":", ".") + ".json";
+    JsonIO.write(jsonPath, {
+      type: "emi:info",
+      stacks: ["item:" + itemId],
+      text: emiLangKey
+    });
+  }
+});

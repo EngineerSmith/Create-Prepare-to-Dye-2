@@ -1,0 +1,7 @@
+{
+	"type": "emi:info",
+	"stacks": [
+		"item:ptdye:red_stringed_device"
+	],
+	"text": "block.ptdye.red_stringed_device.emi.info"
+}

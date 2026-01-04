@@ -1,0 +1,7 @@
+{
+	"type": "emi:info",
+	"stacks": [
+		"item:ptdye:furnished_device"
+	],
+	"text": "block.ptdye.furnished_device.emi.info"
+}

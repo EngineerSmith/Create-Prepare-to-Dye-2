@@ -3,5 +3,5 @@
 	"stacks": [
 		"item:ptdye:hammer"
 	],
-	"text": "item.ptdye.hammer.tooltip.summary"
+	"text": "item.ptdye.hammer.emi.info"
 }

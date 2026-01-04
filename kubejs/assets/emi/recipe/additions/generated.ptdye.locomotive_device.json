@@ -1,0 +1,7 @@
+{
+	"type": "emi:info",
+	"stacks": [
+		"item:ptdye:locomotive_device"
+	],
+	"text": "block.ptdye.locomotive_device.emi.info"
+}
