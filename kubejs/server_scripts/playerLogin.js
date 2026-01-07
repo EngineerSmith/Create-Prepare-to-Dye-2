@@ -41,7 +41,6 @@ PlayerEvents.loggedIn((event) => {
 
   if (!event.player.persistentData.getBoolean("starter")) {
     event.player.give(Item.of("create:wrench", 1));
-    event.player.give(Item.of("crafting_on_a_stick:stonecutter", 1));
     event.player.give(
       Item.of(
         "create:clipboard",
