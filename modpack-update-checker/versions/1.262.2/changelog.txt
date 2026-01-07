@@ -1,0 +1,18 @@
+### [1.262.2](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/compare/1.262.1...1.262.2) (2026-01-07)
+
+
+### Features
+
+* Added first pass drop pods ([51f6e60](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/commit/51f6e602b6cd3141a626eae9933c076a7e973401))
+
+
+### chores
+
+* autopublish 2026-01-07T18:18:49Z ([bf735c3](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/commit/bf735c31196c5dd56b5c76ad37393f0c4ab20da9))
+
+
+### Code Refactoring
+
+* Removed old boat code DPs used to use ([8243933](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/commit/82439334372754128b8ac3bf91b47343453d2fb9))
+
+

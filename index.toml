@@ -1250,7 +1250,7 @@ hash = "48981474996310a7861d97b5aaea8a11ba16d6075c273766daab566848930c09"
 
 [[files]]
 file = "VERSION"
-hash = "76ecf8f1b6129cfb38c587d339f01a9d7f7c88151f918ad51587fbace536a9f4"
+hash = "2f25e7e04547e19b99648feb2f6ecb72e5f800b908ed048aa945e9abd9caa562"
 
 [[files]]
 file = "config/MouseTweaks.cfg"
@@ -1306,7 +1306,7 @@ hash = "679e3eb1366b748e91af6d137f1a9f52a3a3a02373c0e454015dc504df4bf6fa"
 
 [[files]]
 file = "config/create-prepare-to-dye-2.toml"
-hash = "f444a68a0b5333d1126376dc71cf6fbecf52c5fb2463ef4bd2e7a4433432f25d"
+hash = "abdeae383e8d80807009b6b97c1a66000041d2e1d427d4b336045cd3fb3ecaf8"
 
 [[files]]
 file = "config/createdieselgenerators-client.toml"
@@ -1698,7 +1698,7 @@ hash = "e6692fd7c3b5d4db82c9836c81b02182500bb00c81817919120f514df2bc7f00"
 
 [[files]]
 file = "config/modpack-update-checker/config.json"
-hash = "6426afd7b611923f8ffef76c5fb177786b1369e8d04e11d3ec157c1b8257c848"
+hash = "53c80c34dca0c14f998b1c5ddd3cedfe19f1a31d871fada8298c45ba2a6b31f8"
 
 [[files]]
 file = "config/modpack-update-checker/modpack-info.txt"
@@ -4874,7 +4874,7 @@ hash = "ded1b3b51c1b47ee3e812ef73dfb4dd423dec7119ed921585bed038c95328c0d"
 
 [[files]]
 file = "kubejs/assets/sdrp/lang/en_us.json"
-hash = "04e231ad525f0231fc6289b81d4b965fc3a4a3017b1a2c12d5c27ca55b331a30"
+hash = "07448ca56c99d4abcbfb54a344b5e803d6a100f2eb8dfcb594f912938cf57c90"
 
 [[files]]
 file = "kubejs/assets/storagedrawers/blockstates/controller.json"
@@ -5721,6 +5721,22 @@ file = "kubejs/server_scripts/devices.js"
 hash = "b006b1e5b06032117530a45b1c2988afbaa81c8c4e09106cf10eb625e6cc7f9d"
 
 [[files]]
+file = "kubejs/server_scripts/drop_pod/assets.js"
+hash = "5347d6812869ab59a68c4ff8497ea49e80c2d44c53d8b130451ec2a026b47f08"
+
+[[files]]
+file = "kubejs/server_scripts/drop_pod/init.js"
+hash = "8d8ab36224c5f6a82a7060b997e282dc4a5bf614fd92cb1c935e32d02ccd0ec1"
+
+[[files]]
+file = "kubejs/server_scripts/drop_pod/spawn.js"
+hash = "3d209aaabdaf201cdf271d00245df2a816ec2710d395409556855644724602d4"
+
+[[files]]
+file = "kubejs/server_scripts/drop_pod/stateMachine.js"
+hash = "e92730d96fc104029cf768f7f98e7b52ee8b6a53392047161111f9823b6b33bf"
+
+[[files]]
 file = "kubejs/server_scripts/gamerules.js"
 hash = "3789a9448d8f276e053e92d8543da6b4db4e4218b4d0df7ca219deb00867c478"
 
@@ -5862,7 +5878,7 @@ hash = "6b98e7616efd6364eabeec7e653a64d939b5ff69ba03ad2a232d97362e46990a"
 
 [[files]]
 file = "kubejs/startup_scripts/config.js"
-hash = "f61c10edf4f146bc60d7b6083a6c07f75f054414c5f72bcedce8af6dec80cc2d"
+hash = "b98d25789a742fc8ce3c3ad804a7fbc97e503ddd1d9c008bc0a23481b850bae9"
 
 [[files]]
 file = "kubejs/startup_scripts/destroy_speed.js"
@@ -5875,6 +5891,10 @@ hash = "429eb9e01d275b230430362f2701a727bc6213ac5680a471ed2ff195052c9a3e"
 [[files]]
 file = "kubejs/startup_scripts/jsconfig.json"
 hash = "c7a5e25d1f962add57b4a0b44e938e3b3a0691853d02a9c087f4721fff8accbe"
+
+[[files]]
+file = "kubejs/startup_scripts/mount_lock.js"
+hash = "bad3ed4858c6c21707743d2fd6d7985218a548f76ac969b176e448f98ddc30d8"
 
 [[files]]
 file = "kubejs/startup_scripts/new_blocks.js"
@@ -5906,7 +5926,7 @@ hash = "ab323610254d7b8ce09ca2580b344714c58fd4804d26ee0e2525baa24a148809"
 
 [[files]]
 file = "modpack-update-checker/meta.json"
-hash = "f1a831c3496b05c69b31a21686087b800cdac9ec983732de7021cea082e2f14c"
+hash = "b5fbb148d1523acf9e7c4d8a551fd92b8dd161a4d2ae44844e217f557db96508"
 
 [[files]]
 file = "modpack-update-checker/versions/1.100.0/changelog.txt"
@@ -8183,6 +8203,10 @@ hash = "2dc45f02c55c921433f37bf8b94ad979f43d63496f85f6fbd4f933c1cad5e132"
 [[files]]
 file = "modpack-update-checker/versions/1.262.1/changelog.txt"
 hash = "e63822a0e267aff57e013b71e6857f5d51cbeacfaf5f960da03b30f7b8593290"
+
+[[files]]
+file = "modpack-update-checker/versions/1.262.2/changelog.txt"
+hash = "a5b5a38a06e4b90168436ff0a726b4a9c9f6283bd4c91212200267c9529a4b5d"
 
 [[files]]
 file = "modpack-update-checker/versions/1.79.33/changelog.txt"
