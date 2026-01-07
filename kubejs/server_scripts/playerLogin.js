@@ -23,9 +23,6 @@ function applyAutomatonAttributes(player) {
   player.setAttributeBaseValue("forge:attack_range", global.config_attackRange.get());
   player.setAttributeBaseValue("minecraft:generic.attack_damage", global.config_attackDamage.get());
   Utils.server.runCommandSilent(
-    `curios replace crafting_on_a_stick 0 ${player.displayName.getString()} with crafting_on_a_stick:stonecutter`
-  );
-  Utils.server.runCommandSilent(
     `curios replace charm 0 ${player.displayName.getString()} with botania:monocle`
   );
   Utils.server.runCommandSilent(
