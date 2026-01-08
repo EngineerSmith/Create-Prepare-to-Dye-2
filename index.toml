@@ -1250,7 +1250,7 @@ hash = "48981474996310a7861d97b5aaea8a11ba16d6075c273766daab566848930c09"
 
 [[files]]
 file = "VERSION"
-hash = "3d9928455d194b48a80ad88e1acbc340236331bc5c0fb28a4a9d9de48e2c15a5"
+hash = "ca4cefdc2330caf1b7a31edd2a20e2281e2cd6a8a7ce124bc12a4b6cc1ef2647"
 
 [[files]]
 file = "config/MouseTweaks.cfg"
@@ -1694,7 +1694,7 @@ hash = "e6692fd7c3b5d4db82c9836c81b02182500bb00c81817919120f514df2bc7f00"
 
 [[files]]
 file = "config/modpack-update-checker/config.json"
-hash = "85e2fcc93c7fb91cd527a8355eb5ec74162886bbb77d4ef26ee3f0308eefc87d"
+hash = "d350495e755fc7fbbe768a2101113605e5d7c093f058a1ee58d39c02c4e7c68a"
 
 [[files]]
 file = "config/modpack-update-checker/modpack-info.txt"
@@ -4874,7 +4874,7 @@ hash = "ded1b3b51c1b47ee3e812ef73dfb4dd423dec7119ed921585bed038c95328c0d"
 
 [[files]]
 file = "kubejs/assets/sdrp/lang/en_us.json"
-hash = "4c087484c23ec388802e04dd94d10c89ac8d7bc325e9cb3f4eeab933555fd412"
+hash = "a3c62d60b8ba5e5584d6790f70d5d2274364d760fcd3ff95348e65e882ebd6a1"
 
 [[files]]
 file = "kubejs/assets/storagedrawers/blockstates/controller.json"
@@ -5926,7 +5926,7 @@ hash = "ab323610254d7b8ce09ca2580b344714c58fd4804d26ee0e2525baa24a148809"
 
 [[files]]
 file = "modpack-update-checker/meta.json"
-hash = "a6f54f77bc0dc2f0687e7b27bb0fc84d71bda6878988d18aba8432e670ad1f93"
+hash = "f35e77106f7c7232ddc745290771662c8772a09ab0f8b8a7e9006e474c587a15"
 
 [[files]]
 file = "modpack-update-checker/versions/1.100.0/changelog.txt"
@@ -8223,6 +8223,10 @@ hash = "1fe318f6aeaff84cd7eb59b1471f63c4eb52abe392002a28159bdbd6f50a3005"
 [[files]]
 file = "modpack-update-checker/versions/1.263.2/changelog.txt"
 hash = "28bce1ac9f79da1e11bb37a9b2e8cffdea2420db69a4607ee30b8152b1c7b208"
+
+[[files]]
+file = "modpack-update-checker/versions/1.263.3/changelog.txt"
+hash = "f8a1a0e938eae8fbc68e418b86b0f3405d49a26d2929909539a3cf9dda339a84"
 
 [[files]]
 file = "modpack-update-checker/versions/1.79.33/changelog.txt"
