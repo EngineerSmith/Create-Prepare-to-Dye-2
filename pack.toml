@@ -1,12 +1,12 @@
 name = "Create Ptd 2"
 author = "Yarden-zamir"
-version = "1.263.1"
+version = "1.263.2"
 pack-format = "packwiz:1.1.0"
 
 [index]
 file = "index.toml"
 hash-format = "sha256"
-hash = "600d3c563f7ff0df6c606782e4ac1d5705710c02a220bcb9b407db508f022015"
+hash = "7ad59c131523fed03627da25e3e3b2ccc157fa36fc70b60b537ca65de827f5a2"
 
 [versions]
 forge = "47.4.13"
