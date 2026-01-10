@@ -8724,6 +8724,11 @@ hash = "902bac905b93271f02bd0951a22bac06a3da24f5c237fcaeb469e14a7679e508"
 metafile = true
 
 [[files]]
+file = "mods/figura.pw.toml"
+hash = "7b411f636c4a61db20882904e79625750ff1230c83763a0a426c04a8bbf8d7f1"
+metafile = true
+
+[[files]]
 file = "mods/freecam.pw.toml"
 hash = "5c2edd9eb7d86b2b2a34c393022cb376f2667dacd143533412f4c7c731357509"
 metafile = true
