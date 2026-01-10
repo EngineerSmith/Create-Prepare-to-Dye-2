@@ -1,0 +1,13 @@
+## [1.265.0](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/compare/1.264.0...1.265.0) (2026-01-10)
+
+
+### Features
+
+* add figura mod ([e907470](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/commit/e90747081896e7c73a2d94eb2e3f47456dbe6c55))
+
+
+### chores
+
+* autopublish 2026-01-10T07:24:03Z ([efb8e9e](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/commit/efb8e9e9c053ec4e9a5fc0b660c81da403e920c7))
+
+

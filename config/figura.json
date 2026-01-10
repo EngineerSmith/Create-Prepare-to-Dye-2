@@ -1,4 +1,10 @@
 {
   "CONFIG_VERSION": 1,
-  "inventory_scissor": false
+  "chat_nameplate": 0,
+  "inventory_scissor": false,
+  "action_wheel_button": "key.keyboard.unknown",
+  "popup_button": "key.keyboard.unknown",
+  "button_location": 1,
+  "connection_toasts": false,
+  "server_ip": "none"
 }
