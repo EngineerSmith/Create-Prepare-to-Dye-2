@@ -8590,6 +8590,11 @@ hash = "f617d09a937f40ba9b8570ed4bac4383cf8160be22d0c9be459e2c5b75e1b1cd"
 metafile = true
 
 [[files]]
+file = "mods/ae2-personal-me-system.pw.toml"
+hash = "8ac64a52f0016e77660c23c1bc3b59a765211c54e1b8a0f7683cc0a64ca874bc"
+metafile = true
+
+[[files]]
 file = "mods/ae2.pw.toml"
 hash = "74bbdad7434bc02ec767c15c0136269f885331601f73fa2365252c24e58c09bd"
 metafile = true
