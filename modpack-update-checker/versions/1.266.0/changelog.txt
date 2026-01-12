@@ -1,0 +1,24 @@
+## [1.266.0](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/compare/1.265.2...1.266.0) (2026-01-12)
+
+
+### Features
+
+* add simchat configs ([c9b4d62](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/commit/c9b4d62f440ba563caf2898594b19c606b61e7e2))
+
+
+### Minor tweaks
+
+* changed Stored Trade: to Trade: ([ea5b64e](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/commit/ea5b64e03ed8f12a0de2926b70fe802c742cbb83))
+* rename Transceiver ([8cb40cd](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/commit/8cb40cd37aa0d67aca9714103659aee3d0963656))
+
+
+### Fixes
+
+* credit button moved and resized ([2b18db1](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/commit/2b18db1f96b866fcdbe33e7ad00627f78e305cb5))
+
+
+### chores
+
+* autopublish 2026-01-10T18:07:20Z ([db718a0](https://github.com/game-design-driven/Create-Prepare-to-Dye-2/commit/db718a01847b6f73aedf91bb79efebfd21efee67))
+
+
