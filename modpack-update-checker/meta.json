@@ -1001,12 +1001,182 @@
       }
     },
     {
-      "id": "1.266.0",
-      "releasedAt": 1768253868587,
+      "id": "1.267.0",
+      "releasedAt": 1768322306599,
       "updateType": "minor",
       "promotions": {
         "downloads": {
-          "modrinth": "https://modrinth.com/modpack/create-prepare-to-dye-2/version/1.266.0/"
+          "modrinth": "https://modrinth.com/modpack/create-prepare-to-dye-2/version/1.267.0/"
+        }
+      }
+    },
+    {
+      "id": "1.267.1",
+      "releasedAt": 1768556803296,
+      "updateType": "minor",
+      "promotions": {
+        "downloads": {
+          "modrinth": "https://modrinth.com/modpack/create-prepare-to-dye-2/version/1.267.1/"
+        }
+      }
+    },
+    {
+      "id": "1.267.2",
+      "releasedAt": 1768564799727,
+      "updateType": "minor",
+      "promotions": {
+        "downloads": {
+          "modrinth": "https://modrinth.com/modpack/create-prepare-to-dye-2/version/1.267.2/"
+        }
+      }
+    },
+    {
+      "id": "1.267.5",
+      "releasedAt": 1768569928635,
+      "updateType": "minor",
+      "promotions": {
+        "downloads": {
+          "modrinth": "https://modrinth.com/modpack/create-prepare-to-dye-2/version/1.267.5/"
+        }
+      }
+    },
+    {
+      "id": "1.267.6",
+      "releasedAt": 1768570505676,
+      "updateType": "minor",
+      "promotions": {
+        "downloads": {
+          "modrinth": "https://modrinth.com/modpack/create-prepare-to-dye-2/version/1.267.6/"
+        }
+      }
+    },
+    {
+      "id": "1.267.7",
+      "releasedAt": 1768571101676,
+      "updateType": "minor",
+      "promotions": {
+        "downloads": {
+          "modrinth": "https://modrinth.com/modpack/create-prepare-to-dye-2/version/1.267.7/"
+        }
+      }
+    },
+    {
+      "id": "1.267.8",
+      "releasedAt": 1768639916785,
+      "updateType": "minor",
+      "promotions": {
+        "downloads": {
+          "modrinth": "https://modrinth.com/modpack/create-prepare-to-dye-2/version/1.267.8/"
+        }
+      }
+    },
+    {
+      "id": "1.268.0",
+      "releasedAt": 1768656525153,
+      "updateType": "minor",
+      "promotions": {
+        "downloads": {
+          "modrinth": "https://modrinth.com/modpack/create-prepare-to-dye-2/version/1.268.0/"
+        }
+      }
+    },
+    {
+      "id": "1.269.0",
+      "releasedAt": 1768656758761,
+      "updateType": "minor",
+      "promotions": {
+        "downloads": {
+          "modrinth": "https://modrinth.com/modpack/create-prepare-to-dye-2/version/1.269.0/"
+        }
+      }
+    },
+    {
+      "id": "1.269.1",
+      "releasedAt": 1768656966976,
+      "updateType": "minor",
+      "promotions": {
+        "downloads": {
+          "modrinth": "https://modrinth.com/modpack/create-prepare-to-dye-2/version/1.269.1/"
+        }
+      }
+    },
+    {
+      "id": "1.269.2",
+      "releasedAt": 1768658229084,
+      "updateType": "minor",
+      "promotions": {
+        "downloads": {
+          "modrinth": "https://modrinth.com/modpack/create-prepare-to-dye-2/version/1.269.2/"
+        }
+      }
+    },
+    {
+      "id": "1.269.4",
+      "releasedAt": 1768658457754,
+      "updateType": "minor",
+      "promotions": {
+        "downloads": {
+          "modrinth": "https://modrinth.com/modpack/create-prepare-to-dye-2/version/1.269.4/"
+        }
+      }
+    },
+    {
+      "id": "1.269.5",
+      "releasedAt": 1768659038055,
+      "updateType": "minor",
+      "promotions": {
+        "downloads": {
+          "modrinth": "https://modrinth.com/modpack/create-prepare-to-dye-2/version/1.269.5/"
+        }
+      }
+    },
+    {
+      "id": "1.269.6",
+      "releasedAt": 1768659144964,
+      "updateType": "minor",
+      "promotions": {
+        "downloads": {
+          "modrinth": "https://modrinth.com/modpack/create-prepare-to-dye-2/version/1.269.6/"
+        }
+      }
+    },
+    {
+      "id": "1.269.8",
+      "releasedAt": 1768673964331,
+      "updateType": "minor",
+      "promotions": {
+        "downloads": {
+          "modrinth": "https://modrinth.com/modpack/create-prepare-to-dye-2/version/1.269.8/"
+        }
+      }
+    },
+    {
+      "id": "1.269.9",
+      "releasedAt": 1768724832653,
+      "updateType": "minor",
+      "promotions": {
+        "downloads": {
+          "modrinth": "https://modrinth.com/modpack/create-prepare-to-dye-2/version/1.269.9/"
+        }
+      }
+    },
+    {
+      "id": "1.269.10",
+      "releasedAt": 1768935611863,
+      "updateType": "minor",
+      "promotions": {
+        "downloads": {
+          "modrinth": "https://modrinth.com/modpack/create-prepare-to-dye-2/version/1.269.10/"
+        }
+      }
+    },
+    {
+      "id": "1.270.0",
+      "releasedAt": 1769066941603,
+      "updateType": "minor",
+      "promotions": {
+        "downloads": {
+          "modrinth": "https://modrinth.com/modpack/create-prepare-to-dye-2/version/1.270.0/"
         }
       }
     }
